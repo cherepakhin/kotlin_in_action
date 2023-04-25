@@ -7,6 +7,7 @@ internal class PersonTest {
     @Test
     internal fun create() {
         val person = Person("-",1)
+        // Вызывается метод чтения getName. Kotlin сам его создает.
         assertEquals("-", person.name)
     }
 }
