@@ -1,6 +1,6 @@
-### Kotlin in action
+## Kotlin in action
 
-### Настройка
+#### Настройка
 
 ````shell
 $ java -version
