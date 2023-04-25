@@ -14,3 +14,9 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 ```shell
 ./gradlew test
 ```
+
+#### Запуск
+
+```shell
+./gradlew bootRun
+```
