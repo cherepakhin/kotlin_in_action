@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class PersonKTest {
     @Test
     internal fun create() {
-        val person = PersonK("-",1)
+        val person = PersonK(-1, "-", 0)
         // Вызывается метод чтения getName. Kotlin сам его создает.
         assertEquals("-", person.name)
     }
