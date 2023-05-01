@@ -27,11 +27,15 @@ class FirstTest {
 
     @Test
     internal fun createWithDefaultIfNull() {
-        // "?" м.б. null
+        // age:Int? т.е. м.б. null
         data class Person(val name: String, val age: Int? = 10)
-        // val age: Int? м.б. null. В конструкторе указано, что age при null установить 10
-        val person = Person("NAME")
-        assertEquals(10, person.age)
+        // присваиваю null
+        val person = Person("NAME", null)
+        assertNull(person.age)
+
+        // А вот если не указано, то ПРИСВОИТЬ 10
+        val person10 = Person("NAME")
+        assertEquals(10, person10.age)
 
         val person1 = Person("NAME", 100)
         assertEquals(100, person1.age)
