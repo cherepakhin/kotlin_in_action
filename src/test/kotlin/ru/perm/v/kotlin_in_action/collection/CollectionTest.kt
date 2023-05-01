@@ -8,7 +8,8 @@ class CollectionTest {
     val persons = listOf(
         Person(1,"NAME1", 10),
         Person(2, "NAME2", 20),
-        Person(-1, "NAME-1", null))
+        Person(-1, "NAME-1", null)
+    )
 
     @Test
     internal fun collectionSizeTest() {
@@ -17,8 +18,12 @@ class CollectionTest {
 
     @Test
     // elvis. Если age=null, то -100
-    internal fun maxByAgeTestWithElvis() {
-        Assertions.assertEquals(20, persons.maxBy { it.age ?:-100 }.age)
+    internal fun minByAgeTestWithElvis() {
+        Assertions.assertNull(persons.minBy { it.age ?:-100 }.age)
     }
 
+    @Test
+    internal fun maxByIdTest() {
+        Assertions.assertEquals("NAME2", persons.maxBy { it.id }.name)
+    }
 }
