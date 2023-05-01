@@ -29,7 +29,7 @@ class FirstTest {
     internal fun createWithDefaultIfNull() {
         // age:Int? т.е. м.б. null
         data class Person(val name: String, val age: Int? = 10)
-        // присваиваю null
+        // присваиваю null. Можно присвоить, т.к. Int?
         val person = Person("NAME", null)
         assertNull(person.age)
 
