@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test
 class PrimitiveTest {
 
     internal fun getMax(i1: Int, i2: Int): Int {
-        return i1
+        return if (i1 > i2) i1 else i2
     }
 
     @Test
     internal fun maxFuncTest() {
-        Assertions.assertEquals(1, getMax(1,2))
+        Assertions.assertEquals(2, getMax(1,2))
     }
 }
