@@ -55,7 +55,8 @@ class ClassCreateTest {
 
         val p = PersonSimpleMutableLate()
         // lateinit - если не присвоено, то ошибка:
-        // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то при выполнении падает с ошибкой:
+        // Assertions.assertEquals("VALUE", p.name)
+        // Ошибка:
         // lateinit property name has not been initialized
 
         // idea не подсветит ошибку, т.к. lateinit, но при выполнении падает с ошибкой:
