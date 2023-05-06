@@ -50,7 +50,7 @@ class ClassCreateTest {
     @Test
     internal fun mutableNotSimpleLateTest() {
         class PersonSimpleMutableLate() {
-            lateinit var name: String // Если lateinit убрать, то нужно присвоить значение
+            lateinit var name: String // Если lateinit убрать, то IDEA покажет ошибку и нужно присвоить значение
             // НЕПРИМЕНИМО для vaL
         }
 
