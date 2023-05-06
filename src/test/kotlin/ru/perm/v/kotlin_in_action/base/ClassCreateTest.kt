@@ -51,6 +51,7 @@ class ClassCreateTest {
     internal fun mutableNotSimpleLateTest() {
         class PersonSimpleMutableLate() {
             lateinit var name: String // Если lateinit убрать, то нужно присвоить значение
+            // НЕПРИМЕНИМО для vaL
         }
 
         val p = PersonSimpleMutableLate()
