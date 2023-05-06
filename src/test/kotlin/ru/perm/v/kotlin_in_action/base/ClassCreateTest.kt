@@ -50,17 +50,24 @@ class ClassCreateTest {
     @Test
     internal fun mutableNotSimpleLateTest() {
         class PersonSimpleMutableLate() {
-            lateinit var name: String
+            lateinit var name: String // Если lateinit убрать, то нужно присвоить значение
         }
 
         val p = PersonSimpleMutableLate()
-        // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то ошибка
+        // lateinit - если не присвоено, то ошибка:
+        // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то при выполнении падает с ошибкой:
+        // lateinit property name has not been initialized
+
+        // idea не подсветит ошибку
+        // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то при выполнении падает с ошибкой:
+
+        // Ошибка при выполнении:
         // lateinit property name has not been initialized
         // kotlin.UninitializedPropertyAccessException: lateinit property name has not been initialized
 
-        p.name = "---" // VAL, но LATEINIT - инициализация отложена
+        p.name = "---" // VAR
         Assertions.assertEquals("---", p.name)
-        p.name = "VALUE" // Но можно присваивать
+        p.name = "VALUE" // VAR можно присваивать
         Assertions.assertEquals("VALUE", p.name)
     }
 
