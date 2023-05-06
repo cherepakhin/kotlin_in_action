@@ -24,11 +24,26 @@ class ClassCreateTest {
     }
 
     @Test
+    internal fun immutableWithFieldTest() {
+        class PersonSimpleImmutable() {
+            val name: String
+                get() {
+                    // Какое-то-то сложное вычисление
+                    return "NAME " + "IMMUTABLE"
+                }
+//                set(s:String) { // VAL!!! после присвоения, name менять нельзя
+//                    name =s
+//                }
+        }
+        assertEquals("NAME IMMUTABLE", PersonSimpleImmutable().name)
+    }
+
+    @Test
     internal fun mutableTest() {
         class PersonSimpleMutable(var name: String)
 
         val p = PersonSimpleMutable("FIRST_VAL")
-        p.name = "SECOND_VAL"
+        p.name = "SECOND_VAL" // VAR - после присвоения, менять можно
         Assertions.assertEquals("SECOND_VAL", p.name)
     }
 }
