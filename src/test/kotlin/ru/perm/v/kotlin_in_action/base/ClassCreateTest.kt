@@ -1,6 +1,5 @@
 package ru.perm.v.kotlin_in_action.base
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -12,7 +11,7 @@ class ClassCreateTest {
 
         val person = PersonSimpleImmutable("NAME")
         // person.name ="" // после присвоения, name менять нельзя
-        Assertions.assertEquals("NAME", person.name)
+        assertEquals("NAME", person.name)
 
         class PersonSimpleImmutableLast() {
             var name = "" // vaR!!! после присвоения, name менять МОЖНО
@@ -44,7 +43,7 @@ class ClassCreateTest {
 
         val p = PersonSimpleMutable("FIRST_VAL")
         p.name = "SECOND_VAL" // VAR - после присвоения, менять можно
-        Assertions.assertEquals("SECOND_VAL", p.name)
+        assertEquals("SECOND_VAL", p.name)
     }
 
     @Test
@@ -68,9 +67,9 @@ class ClassCreateTest {
         // kotlin.UninitializedPropertyAccessException: lateinit property name has not been initialized
 
         p.name = "---"
-        Assertions.assertEquals("---", p.name)
+        assertEquals("---", p.name)
         p.name = "VALUE"
-        Assertions.assertEquals("VALUE", p.name)
+        assertEquals("VALUE", p.name)
     }
 
 }
