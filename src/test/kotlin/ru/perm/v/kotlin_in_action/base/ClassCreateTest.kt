@@ -31,7 +31,7 @@ class ClassCreateTest {
                     // Какое-то-то сложное вычисление
                     return "NAME " + "IMMUTABLE"
                 }
-//                set(s:String) { // VAL!!! после присвоения, name менять нельзя
+//                set(s:String) { // VAL!!! name менять нельзя
 //                    name =s
 //                }
         }
