@@ -1,9 +1,8 @@
 package ru.perm.v.kotlin_in_action.base
 
 import ru.perm.v.kotlin_in_action.PersonK
-import ru.perm.v.kotlin_in_action.collection.CollectionTest
 
-class LambdaFunc {
+class LambdaFuncTest {
     val persons = listOf(
         PersonK(1, "NAME1", 10),
         PersonK(2, "NAME2", 20),
