@@ -59,16 +59,16 @@ class ClassCreateTest {
         // Ошибка:
         // lateinit property name has not been initialized
 
-        // idea не подсветит ошибку, т.к. lateinit, но при выполнении падает с ошибкой:
+        // idea НЕ ПОДСВЕТИТ ошибку, т.к. lateinit, но при выполнении падает с ошибкой:
         // Assertions.assertEquals("VALUE", p.name)
 
         // Ошибка при выполнении:
         // lateinit property name has not been initialized
         // kotlin.UninitializedPropertyAccessException: lateinit property name has not been initialized
 
-        p.name = "---" // VAR
+        p.name = "---"
         Assertions.assertEquals("---", p.name)
-        p.name = "VALUE" // VAR можно присваивать
+        p.name = "VALUE"
         Assertions.assertEquals("VALUE", p.name)
     }
 
