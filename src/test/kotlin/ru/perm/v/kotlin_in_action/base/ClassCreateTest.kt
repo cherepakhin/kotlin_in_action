@@ -58,8 +58,8 @@ class ClassCreateTest {
         // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то при выполнении падает с ошибкой:
         // lateinit property name has not been initialized
 
-        // idea не подсветит ошибку
-        // Assertions.assertEquals("VALUE", p.name) // т.к. lateinit, то при выполнении падает с ошибкой:
+        // idea не подсветит ошибку, т.к. lateinit, но при выполнении падает с ошибкой:
+        // Assertions.assertEquals("VALUE", p.name)
 
         // Ошибка при выполнении:
         // lateinit property name has not been initialized
