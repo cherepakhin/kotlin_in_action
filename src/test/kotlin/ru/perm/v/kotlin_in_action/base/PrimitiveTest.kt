@@ -1,6 +1,7 @@
 package ru.perm.v.kotlin_in_action.base
 
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class PrimitiveTest {
@@ -13,11 +14,11 @@ class PrimitiveTest {
 
     @Test
     fun maxFuncTest() {
-        Assertions.assertEquals(2, getMax(1,2))
+        assertEquals(2, getMax(1,2))
     }
 
     @Test
     fun maxShortTest() {
-        Assertions.assertEquals(2, getMaxShort(1,2))
+        assertEquals(2, getMaxShort(1,2))
     }
 }
