@@ -15,7 +15,9 @@ class ArrTest {
 
     @Test
     internal fun addToList() {
-        val list = arrayListOf("aaa","bbb") // val - неизменяемое
+        // val - неизменяемое. Нельзя изменить ссылку,
+        // но добавить элемент можно
+        val list = arrayListOf("aaa","bbb")
         list.add("ccc")
         Assertions.assertEquals("ccc", list.get(2))
     }
