@@ -55,7 +55,7 @@ class LambdaFuncTest {
     }
 
     @Test
-    internal fun lambdaWithBodyReturnTest() {
+    fun lambdaWithBodyReturnTest() {
         val simpleLambdaWithBodyAndReturn: () -> String = {
             val v = "Return val"
             v // return не нужен. Результатом будет последнее вычисление
@@ -64,12 +64,8 @@ class LambdaFuncTest {
     }
 
     @Test
-    internal fun findByNameTest() {
-//        persons.fold(persons.get(2), {person -> person.id})
-
+    fun foldTest() {
+        val res = persons.fold("All ids->", { accum, person -> accum + person.id +","})
+        assertEquals("All ids->1,2,-1,", res)
     }
-
-
-
-    //    fun findAlice() = findPerson{ it.name == "Alice"}
 }
