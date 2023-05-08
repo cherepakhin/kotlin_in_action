@@ -18,11 +18,13 @@ class LambdaFuncTest {
     }
 
     @Test
-    fun sampleLambdaTest() {
+    fun sampleFoldForSumTest() {
         val items = listOf(1, 2, 3, 4, 5)
 
         // Лямбда - это блок кода, заключенный в фигурные скобки.
-        items.fold(0, {
+        // Задание и ВЫПОЛНЕНИЕ для items функции fold (свертка)
+        // Fold применяется к items
+        val printAndSumFunc = items.fold(0, {
             // Если у лямбды есть параметры, то они указываются перед знаком '->'
                 acc: Int, i: Int ->
             print("acc = $acc, i = $i, ")
@@ -31,7 +33,21 @@ class LambdaFuncTest {
             // Последнее выражение в лямбде считается возвращаемым значением:
             myresult
         })
+        assertEquals(15, printAndSumFunc)
 
+        // Типы параметров в лямбде необязательны, если они могут быть выведены:
+        //fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
+        val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
+        assertEquals("Elements: 1 2 3 4 5", "$joinedToString")
+    }
+
+    @Test
+    fun sampleFoldForStringTest() {
+        val items = listOf(1, 2, 3, 4, 5)
+
+        // Лямбда - это блок кода, заключенный в фигурные скобки.
+        // Задание и ВЫПОЛНЕНИЕ для items функции fold (свертка)
+        // Fold применяется к items
         // Типы параметров в лямбде необязательны, если они могут быть выведены:
         //fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
@@ -56,8 +72,8 @@ class LambdaFuncTest {
 
     @Test
     internal fun lambdaWithParamAndReturnTest() {
-        val simpleLambdaWithReturn = {s1:String, s2:String ->  s1 + s2 }
-        assertEquals("12", simpleLambdaWithReturn("1","2"))
+        val simpleLambdaWithReturn = { s1: String, s2: String -> s1 + s2 }
+        assertEquals("12", simpleLambdaWithReturn("1", "2"))
     }
 
     @Test
