@@ -25,7 +25,7 @@ class RectangleTest {
     @Test
     internal fun isNotKvadrat() {
         // обращение к свойству isSquireProp через метод get, в отличие от прямого обращения к переменной
-        // в примере выше обращение к методу isSquire(), а тут как к свойству
+        // в примере выше обращение к методу isSquire(), а тут как к свойству val a =rect.isSquireProp
         val rect = Rectangle(1, 5)
         // Везде обращение как к полям
         // rect.length
