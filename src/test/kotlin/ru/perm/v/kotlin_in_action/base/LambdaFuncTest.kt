@@ -50,6 +50,7 @@ class LambdaFuncTest {
         // Fold применяется к items
         // Типы параметров в лямбде необязательны, если они могут быть выведены:
         // fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
+        // задано выражение и результат этого выражения будет return (сам "return" можно не указывать)
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
         assertEquals("Elements: 1 2 3 4 5", "$joinedToString")
     }
@@ -60,14 +61,14 @@ class LambdaFuncTest {
         assertEquals(3, sum(1, 2))
         // Unit - нет return
         val simpleLambda: () -> Unit = { println("Print Hello Kotlin") }
+        // Вызов лямбды. Просто печатает, ничего не возвращает (указано Unit)
         simpleLambda()
-
     }
 
     @Test
-    internal fun lambdaWithReturnTest() {
-        val simpleLambdaWithReturn: () -> String = { "Return Hello Kotlin" }
-        assertEquals("Return Hello Kotlin", simpleLambdaWithReturn())
+    fun lambdaWithReturnTest() {
+        val simpleLambdaWithReturn: () -> String = { "Returned value" }
+        assertEquals("Returned value", simpleLambdaWithReturn())
     }
 
     @Test
@@ -80,9 +81,16 @@ class LambdaFuncTest {
     fun lambdaWithBodyReturnTest() {
         val simpleLambdaWithBodyAndReturn: () -> String = {
             val v = "Return val"
-            v // return не нужен. Результатом будет последнее вычисление
+            v // return можно не указывать не нужен. Результатом будет "v"
         }
         assertEquals("Return val", simpleLambdaWithBodyAndReturn())
+
+        val simpleLambdaWithBodyAndReturn1: () -> String = {
+            val val1 = "VAL1"
+            val val2 = "VAL2"
+            val1+" "+val2 // return можно не указывать не нужен. Результатом будет "v"
+        }
+        assertEquals("VAL1 VAL2", simpleLambdaWithBodyAndReturn1())
     }
 
     @Test
