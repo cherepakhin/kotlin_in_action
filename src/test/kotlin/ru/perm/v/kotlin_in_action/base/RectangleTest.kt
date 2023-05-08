@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test
 
 class RectangleTest {
     class Rectangle(val length: Int = 0, val width: Int) {
-        fun isSquireFun(): Boolean {
-            return length.equals(width)
-        }
 
         val isSquireProp: Boolean
             get() {
@@ -18,6 +15,10 @@ class RectangleTest {
 
         val isSquireShortProp
             get() = length.equals(width)
+
+        fun isSquireFun(): Boolean {
+            return length.equals(width)
+        }
     }
 
     @Test
