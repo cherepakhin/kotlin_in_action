@@ -65,6 +65,8 @@ class LambdaFuncTest {
 
     @Test
     fun foldTest() {
+        //Функция fold также сводит все элементы потока в один.
+        // Но в отличие от оператора reduce оператор fold в качестве первого параметра принимает начальное значение
         val resultFold = persons.fold("All ids->", { accum, person -> accum + person.id + "," })
         assertEquals("All ids->1,2,-1,", resultFold)
     }
