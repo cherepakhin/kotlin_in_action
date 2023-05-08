@@ -88,7 +88,8 @@ class LambdaFuncTest {
         val simpleLambdaWithBodyAndReturn1: () -> String = {
             val val1 = "VAL1"
             val val2 = "VAL2"
-            val1+" "+val2 // return можно не указывать не нужен. Результатом будет "v"
+            "$val1 $val2" // return можно не указывать. Результатом будет вычисленное значение
+            // val1+" "+val2 // можно и так. Idea рекомендует то, что выше "$val1 $val2"
         }
         assertEquals("VAL1 VAL2", simpleLambdaWithBodyAndReturn1())
     }
