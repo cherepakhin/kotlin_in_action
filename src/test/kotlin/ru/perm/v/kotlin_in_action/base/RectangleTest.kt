@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
+
+//equals()
+//При определении класса данных функция equals() (и оператор ==) по-прежнему возвращает true,
+// если ссылки указывают на один объект.
+// НО она также возвращает true, если объекты имеют одинаковые значения свойств, определённых в КОНСТРУКТОРЕ
 class RectangleTest {
     class Rectangle(val length: Int = 0, val width: Int, var color: String = "") {
 
