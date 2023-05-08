@@ -42,7 +42,7 @@ class LambdaFuncTest {
     fun lambdaTest() {
         val sum = { x: Int, y: Int -> x + y }
         assertEquals(3, sum(1, 2))
-
+        // Unit - нет return
         val simpleLambda: () -> Unit = { println("Print Hello Kotlin") }
         simpleLambda()
 
@@ -52,6 +52,12 @@ class LambdaFuncTest {
     internal fun lambdaWithReturnTest() {
         val simpleLambdaWithReturn: () -> String = { "Return Hello Kotlin" }
         assertEquals("Return Hello Kotlin", simpleLambdaWithReturn())
+    }
+
+    @Test
+    internal fun lambdaWithParamAndReturnTest() {
+        val simpleLambdaWithReturn = {s1:String, s2:String ->  s1 + s2 }
+        assertEquals("12", simpleLambdaWithReturn("1","2"))
     }
 
     @Test
@@ -65,7 +71,7 @@ class LambdaFuncTest {
 
     @Test
     fun foldTest() {
-        //Функция fold также сводит все элементы потока в один.
+        // Функция fold также сводит все элементы потока в один.
         // Но в отличие от оператора reduce оператор fold в качестве первого параметра принимает начальное значение
         val resultFold = persons.fold("All ids->", { accum, person -> accum + person.id + "," })
         assertEquals("All ids->1,2,-1,", resultFold)
