@@ -65,7 +65,7 @@ class LambdaFuncTest {
 
     @Test
     fun foldTest() {
-        val res = persons.fold("All ids->", { accum, person -> accum + person.id + "," })
-        assertEquals("All ids->1,2,-1,", res)
+        val resultFold = persons.fold("All ids->", { accum, person -> accum + person.id + "," })
+        assertEquals("All ids->1,2,-1,", resultFold)
     }
 }
