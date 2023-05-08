@@ -36,7 +36,7 @@ class FirstTest {
         val person = Person("NAME", null)
         assertNull(person.age)
 
-        // А вот если не указано, то ПРИСВОИТЬ 10
+        // А вот если не указано, то будет ПРИСВОЕНО 10
         val person10 = Person("NAME")
         assertEquals(10, person10.age)
 
