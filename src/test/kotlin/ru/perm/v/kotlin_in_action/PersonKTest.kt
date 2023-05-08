@@ -10,4 +10,10 @@ internal class PersonKTest {
         // Вызывается метод чтения getName. Kotlin сам его создает.
         assertEquals("-", person.name)
     }
+
+    @Test
+    fun getDescription() {
+        val person = PersonK(100, "NAME", null)
+        assertEquals("-1NAME", person.getDescription())
+    }
 }
