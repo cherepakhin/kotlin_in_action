@@ -21,6 +21,12 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 ./gradlew test --tests=ClassCreateTest
 ```
 
+Перезапуск тестов с очисткой
+
+```shell
+./gradlew clean test
+```
+
 #### Запуск
 
 ```shell
