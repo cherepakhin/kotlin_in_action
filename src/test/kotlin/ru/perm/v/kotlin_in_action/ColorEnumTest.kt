@@ -1,9 +1,7 @@
 package ru.perm.v.kotlin_in_action
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
-import java.util.*
 
 internal class ColorEnumTest {
 

@@ -1,6 +1,6 @@
 package ru.perm.v.kotlin_in_action
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class PersonKTest {
