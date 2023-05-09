@@ -24,8 +24,7 @@ class PrimitiveTest {
 
     @Test
     fun castTest() {
-        var i = 0
-        i = 1
+        var i = 1
 //        i ="" // Так нельзя. Тип уже присвоен как Int и Kotlin запрещает переопределить тип
         assertEquals(1, i)
     }
