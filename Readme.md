@@ -27,6 +27,21 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 ./gradlew clean test
 ```
 
+### Подключен Allure Report
+
+Просмотр результатов:
+
+```shell
+./allure serve build/allure-results
+```
+Или так
+```shell
+./build/allure/commandline/bin/allure serve build/allure-rests/
+```
+Результаты тестов в Allure
+
+![Результаты тестов в Allure](doc/allure_results.png)
+
 #### Запуск
 
 ```shell
