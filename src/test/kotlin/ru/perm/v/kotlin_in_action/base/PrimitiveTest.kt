@@ -1,6 +1,5 @@
 package ru.perm.v.kotlin_in_action.base
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
