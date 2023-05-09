@@ -27,7 +27,7 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 ./gradlew clean test
 ```
 
-### Подключен Allure Report
+#### Подключен Allure Report
 
 Просмотр результатов:
 
