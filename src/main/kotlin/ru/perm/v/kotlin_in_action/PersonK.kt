@@ -6,7 +6,7 @@ open class PersonK(
     var age: Int? // nullable
 ) {
     fun getDescription(): String {
-        return id.toString() + name + age
+        return "id=%s, name=%s, age=%s".format(id, name, age)
     }
 }
 

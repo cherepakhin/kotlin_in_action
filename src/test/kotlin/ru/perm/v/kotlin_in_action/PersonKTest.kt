@@ -14,6 +14,12 @@ internal class PersonKTest {
     @Test
     fun getDescriptionWithNull() {
         val person = PersonK(100, "NAME", null)
-        assertEquals("100NAMEnull", person.getDescription())
+        assertEquals("id=100, name=NAME, age=null", person.getDescription())
+    }
+
+    @Test
+    fun getDescription() {
+        val person = PersonK(100, "NAME", 10)
+        assertEquals("id=100, name=NAME, age=10", person.getDescription())
     }
 }
