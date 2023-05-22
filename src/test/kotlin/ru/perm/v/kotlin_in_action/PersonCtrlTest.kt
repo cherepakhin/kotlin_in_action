@@ -15,11 +15,6 @@ internal class PersonCtrlTest {
     fun getPersons() {
         val persons = PersonCtrl().index()
 
-        assertEquals(3, persons.size)
-        assertEquals(PersonK(1, "name1", 10), persons.get(0))
-        assertEquals(PersonK(2, "name2", 20), persons.get(1))
-        assertEquals(PersonK(100, "name100", 100), persons.get(2))
-
         assertEquals(listOf(
             PersonK(1, "name1", 10),
             PersonK(2, "name2", 20),
