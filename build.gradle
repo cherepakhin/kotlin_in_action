@@ -5,7 +5,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'org.jetbrains.kotlin.jvm' version '1.7.22'
 	id 'org.jetbrains.kotlin.plugin.spring' version '1.7.22'
-	id 'io.qameta.allure' version '2.11.2'
+	id 'io.qameta.allure' version '2.10.0' // version 2.10.0 WORK! NO WARNINGS for generate allure report
 }
 
 group = 'ru.perm.v'
@@ -24,6 +24,7 @@ dependencies {
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter'
 }
 
 tasks.withType(KotlinCompile) {
