@@ -9,16 +9,16 @@ class PrimitiveTest {
         return if (i1 > i2) i1 else i2
     }
 
-    internal fun getMaxShort(i1: Int, i2: Int) =  if (i1 > i2) i1 else i2
+    internal fun getMaxShort(i1: Int, i2: Int) = if (i1 > i2) i1 else i2
 
     @Test
     fun maxFuncTest() {
-        assertEquals(2, getMax(1,2))
+        assertEquals(2, getMax(1, 2))
     }
 
     @Test
     fun maxShortTest() {
-        assertEquals(2, getMaxShort(1,2))
+        assertEquals(2, getMaxShort(1, 2))
     }
 
     @Test

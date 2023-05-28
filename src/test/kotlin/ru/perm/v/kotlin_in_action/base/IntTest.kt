@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 class IntTest {
     @Test
     internal fun simpl() {
-        val i =0
+        val i = 0
         Assertions.assertEquals(0, i)
     }
 }
