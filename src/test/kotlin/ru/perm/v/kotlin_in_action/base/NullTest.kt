@@ -28,7 +28,7 @@ class NullTest { // public не нужен, т.к используется ТО�
                 get() = field
         }
 
-        val a: A = A()
+        val a = A()
         Assertions.assertFalse(a.enabled)
         a.enabled = true
         Assertions.assertTrue(a.enabled)
