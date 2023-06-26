@@ -16,4 +16,8 @@ class AssignTest {
 //        a = 1 //RED ERROR. Класс д.б. String
         Assertions.assertEquals("-", a)
     }
+
+    class B {
+        var i =0
+    }
 }

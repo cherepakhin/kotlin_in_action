@@ -1,4 +1,4 @@
-package ru.perm.v.kotlin_in_action.base
+    package ru.perm.v.kotlin_in_action.base
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -7,19 +7,22 @@ class ClassCreateTest {
 
     @Test
     internal fun immutableTest() {
+        // Простое определение ВНУТРЕННЕГО класса
         class PersonSimpleImmutable(val name: String) // VAL!!! после присвоения, name менять нельзя
 
         val person = PersonSimpleImmutable("NAME")
-        // person.name ="" // после присвоения, name менять нельзя
+        // person.name ="" // после присвоения, name менять нельзя, т.к. VAL
         assertEquals("NAME", person.name)
 
-        class PersonSimpleImmutableLast() {
+        class PersonSimple() {
             var name = "" // vaR!!! после присвоения, name менять МОЖНО
         }
 
-        val person1 = PersonSimpleImmutableLast()
+        val person1 = PersonSimple()
         person1.name = "NAME1"
         assertEquals("NAME1", person1.name)
+        person1.name = "NAME2"
+        assertEquals("NAME2", person1.name)
     }
 
     @Test
@@ -30,7 +33,7 @@ class ClassCreateTest {
                     // Какое-то-то сложное вычисление
                     return "NAME " + "IMMUTABLE"
                 }
-//                set(s:String) { // VAL!!! name менять нельзя
+//                set(s:String) { // VAL!!! name менять нельзя. Если раскоммитить, то весь блок красный.
 //                    name =s
 //                }
         }
