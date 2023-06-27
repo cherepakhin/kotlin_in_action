@@ -2,6 +2,7 @@ package ru.perm.v.kotlin_in_action.base
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.springframework.expression.Operation
 import ru.perm.v.kotlin_in_action.PersonK
 
 class LambdaFuncTest {
@@ -19,7 +20,7 @@ class LambdaFuncTest {
 
     @Test
     fun sampleFoldForSumTest() {
-        val items = listOf(1, 2, 3, 4, 5)
+        val items = listOf(1, 2, 3, 4, 5) // сумма = 15
 
         // Лямбда - это блок кода, заключенный в фигурные скобки.
         // Задание и ВЫПОЛНЕНИЕ для items функции fold (свертка)
@@ -27,11 +28,11 @@ class LambdaFuncTest {
         val printAndSumFunc = items.fold(0, {
             // Если у лямбды есть параметры, то они указываются перед знаком '->'
                 acc: Int, i: Int ->
-            print("acc = $acc, i = $i, ")
-            val myresult = acc + i
-            println("result = $myresult")
-            // Последнее выражение в лямбде считается возвращаемым значением:
-            myresult
+                    print("acc = $acc, i = $i, ")
+                    val myresult = acc + i
+                    println("result = $myresult")
+                    // Последнее выражение в лямбде считается возвращаемым значением:
+                    myresult
         })
         assertEquals(15, printAndSumFunc)
 
@@ -102,5 +103,10 @@ class LambdaFuncTest {
         // второго - лямбду для вычисления
         val resultFold = persons.fold("All ids->", { accum, person -> accum + person.id + "," })
         assertEquals("All ids->1,2,-1,", resultFold)
+    }
+
+    @Test
+    internal fun operationableTest() {
+        var operation: Operation
     }
 }
