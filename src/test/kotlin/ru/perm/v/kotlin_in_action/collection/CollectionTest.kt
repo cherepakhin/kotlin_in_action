@@ -14,6 +14,8 @@ class CollectionTest {
 
     @Test
     internal fun collectionSizeTest() {
+        // internal видно внутри модуля. Модуль - это набор скомпилированных вместе Kotlin файлов, например:
+        // модуль IntelliJ IDEA; Maven проект;
         Assertions.assertEquals(3, persons.size)
     }
 
