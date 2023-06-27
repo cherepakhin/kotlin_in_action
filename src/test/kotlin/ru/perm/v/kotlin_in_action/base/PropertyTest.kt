@@ -13,12 +13,12 @@ class PropertyTest {
         }
 
     @Test
-    fun InitMyPropTest() {
+    fun initMyPropTest() {
         Assertions.assertEquals("", myProp)
     }
 
     @Test
-    internal fun setMyPropTest() {
+    fun setMyPropTest() {
         myProp = "VAL"
         Assertions.assertEquals("VAL", myProp)
     }
