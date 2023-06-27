@@ -8,6 +8,6 @@ import ru.perm.v.kotlin_in_action.getCalcFunc // Можно импортиров
 class ImportFuncTest {
     @Test
     internal fun simple() {
-        Assertions.assertEquals("id.toString() + name + age", getCalcFunc());
+        Assertions.assertEquals("id.toString() + name + age, CONST", getCalcFunc());
     }
 }
