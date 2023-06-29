@@ -10,8 +10,8 @@ import ru.perm.v.kotlin_in_action.PersonK
 class TransferParamTest {
 
     @Test
-    fun unmodifiedSrcList() {
-        val srcList = listOf<String>("a1", "a2")
+    fun unmodifiedSrcListForString() {
+        val srcList = listOf("a1", "a2")
         val changedList = changeAndReturnNewList(srcList)
         assertEquals("a1", srcList.get(0))
         assertEquals("a2", srcList.get(1))
@@ -42,7 +42,7 @@ class TransferParamTest {
 
     // Те же самые тесты проверки списка с объектами
     @Test
-    fun unmodifiedSrcListPerson() {
+    fun unmodifiedSrcForListPerson() {
         val srcList = listOf<PersonK>(
             PersonK(1, "NAME1", 1),
             PersonK(2, "NAME2", 2)
