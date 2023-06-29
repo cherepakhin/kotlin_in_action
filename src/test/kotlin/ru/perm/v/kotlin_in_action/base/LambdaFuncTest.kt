@@ -23,17 +23,19 @@ class LambdaFuncTest {
         val items = listOf(1, 2, 3, 4, 5) // сумма = 15
 
         // Лямбда - это блок кода, заключенный в фигурные скобки.
-        // Задание и ВЫПОЛНЕНИЕ для items функции fold (свертка)
+        // Задание и ВЫПОЛНЕНИЕ для items функции fold (функция свертки для коллекций)
         // Fold применяется к items
-        val printAndSumFunc = items.fold(0, {
+        val printAndSumFunc = items.fold(0) {
+            // или так, но пишется предупреждение val printAndSumFunc = items.fold(0, {
             // Если у лямбды есть параметры, то они указываются перед знаком '->'
+            // acc - значение, вычисленное(возвращенное) на пред.этапе. Начальное значение в первом параметре fold
                 acc: Int, i: Int ->
-                    print("acc = $acc, i = $i, ")
-                    val myresult = acc + i
-                    println("result = $myresult")
-                    // Последнее выражение в лямбде считается возвращаемым значением:
-                    myresult
-        })
+            print("acc = $acc, i = $i, ")
+            val myresult = acc + i
+            println("result = $myresult")
+            // Последнее выражение в лямбде считается возвращаемым значением:
+            myresult
+        }
         assertEquals(15, printAndSumFunc)
 
         // Типы параметров в лямбде необязательны, если они могут быть выведены:
@@ -109,4 +111,36 @@ class LambdaFuncTest {
     internal fun operationableTest() {
         var operation: Operation
     }
+
+    @Test
+    fun lambdaPairAndDSL() {
+        // Kotlin DSL: Теория и Практика
+        // https://habr.com/ru/companies/haulmont/articles/341402/
+
+        val helloPrint: (String) -> Unit = { println(it) }
+        helloPrint("Hello")
+
+        val helloWithReturn: (String) -> String = { "Hello, " + it }
+        assertEquals("Hello, Vasi", helloWithReturn("Vasi"))
+
+        val helloWithParams: (String, Int) -> Unit = { a, b -> println("a=$a, b=$b") }
+        helloWithParams("A", 100)
+
+        val pair = Point(10, 20)
+        val x = pair.first
+        val y = pair.second
+        assertEquals(10, x)
+        assertEquals(20, y)
+
+        val x1 = pair.component1()
+        val y1 = pair.component2()
+        assertEquals(10, x1)
+        assertEquals(20, y1)
+
+        val (x2, y2) = Point(1, 2)
+        assertEquals(1, x2)
+        assertEquals(2, y2)
+    }
+
 }
+
