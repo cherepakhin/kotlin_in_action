@@ -1,5 +1,6 @@
 package ru.perm.v.kotlin_in_action
 
+// data class. equals и hashcode на основе параметров id,name,age
 data class PersonK(
     val id: Int,
     var name: String, // val неизменяемое. Нет сеттера. Присвоение только через конструктор
