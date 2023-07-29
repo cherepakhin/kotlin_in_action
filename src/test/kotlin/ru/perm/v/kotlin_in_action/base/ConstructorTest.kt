@@ -19,9 +19,9 @@ class ConstructorTest {
                 return houseNumber
             }
         }
-        var address= Address("5")
+        var address= Address("5") // передается строка в constructor(s: String)
         Assertions.assertEquals("5", address.getHouseNumber())
-        address = Address(777)
+        address = Address(777) // передается число в constructor(i: Int)
         Assertions.assertEquals("777", address.getHouseNumber())
 
     }
