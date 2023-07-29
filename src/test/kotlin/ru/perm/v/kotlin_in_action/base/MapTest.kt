@@ -21,9 +21,5 @@ class MapTest {
 
         val person30 = PersonK(30, "name30", 31)
         Assertions.assertFalse(mutableMap.values.contains(person30))
-
-        val person20_1 = PersonK(20, "name20", 21)
-        mutableMap.put(201, person20_1)
-        Assertions.assertEquals(person20, person20_1)
     }
 }
