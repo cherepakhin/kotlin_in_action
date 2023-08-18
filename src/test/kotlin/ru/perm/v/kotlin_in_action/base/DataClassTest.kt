@@ -11,10 +11,12 @@ class DataClassTest {
         val mutableMap = mutableMapOf<Int, PersonK>()
 
         val person20 = PersonK(20, "name20", 21)
-        val person20_1 = PersonK(20, "name20", 21)
+        val person20_1 = PersonK(20, "-", 21)
+//        person20_1.id = 10 // ERROR. id -> VAL, задано в конструкторе, менять нельзя
+        person20_1.name = "name20" // это VAR. менять можно
 
         mutableMap.put(201, person20_1)
-        // разные объекты, но data classы с одинаковыми значениями
+        // разные объекты, но это data classы с одинаковыми значениями
         // у DataClass equals по значениям полей
         Assertions.assertEquals(person20, person20_1)
 

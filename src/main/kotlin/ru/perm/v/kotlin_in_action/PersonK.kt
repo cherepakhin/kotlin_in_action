@@ -2,8 +2,9 @@ package ru.perm.v.kotlin_in_action
 
 // data class. equals и hashcode на основе параметров id,name,age
 data class PersonK(
-    val id: Int,
-    var name: String, // val неизменяемое. Нет сеттера. Присвоение только через конструктор
+    val id: Int, // задается только в конструкторе. VAL после присвоения менять нельзя,
+    // неизменяемое. Нет сеттера. Присвоение только через конструктор
+    var name: String, // VAR менять после присвоения можно
     var age: Int? // nullable
 ) {
     var comment: String = "-"
