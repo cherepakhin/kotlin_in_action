@@ -1,5 +1,6 @@
 package ru.perm.v.kotlin_in_action
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.lang.Long
@@ -33,5 +34,23 @@ class CastTest {
             res = false
         }
         assertTrue(res)
+    }
+
+    /**
+     * Применение Any и cast
+     */
+    fun autoCast(s: Any): String {
+        if (s is String) {
+            // переменная s:Any, после "s is String" уже String
+            return String.format("%s is String, length=%d", s, s.length)
+        } else {
+            return "Not String"
+        }
+    }
+
+    @Test
+    fun autoCastTest() {
+        assertEquals("AAA is String, length=3", autoCast("AAA"))
+        assertEquals("Not String", autoCast(100))
     }
 }
