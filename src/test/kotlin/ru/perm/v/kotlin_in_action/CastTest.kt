@@ -23,7 +23,7 @@ class CastTest {
         val l = Long(1)
         res = false
 //        if(l is String) { ошибка. красным String
-        if(l is Long) { // !IS
+        if(l is Long) { // IS
             res = true
         }
         assertTrue(res)
