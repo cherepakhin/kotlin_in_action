@@ -15,18 +15,26 @@ class LazyTest {
         // val ss = ClassWithHeavyInitialization()
 
 //        println(numberOfInitializations)
-        // lazy инициализация:
+
+        // lazy инициализация: "by lazy" ключевое выражение.
+        // инициализация lazValue = ClassWithHeavyInitialization() будет вызвано при первом обращении к lazyValue
         val lazyValue: ClassWithHeavyInitialization by lazy {
             numberOfInitializations.incrementAndGet()
             ClassWithHeavyInitialization()
         }
         // when
+        // еще не было обращения к значению lazyValue,
+        // и lazyValue еще не был инициализирован
+        // >start numberOfInitializations: 0
         println(format("start numberOfInitializations: %s",numberOfInitializations.get()))
 
-        println(format("lazyValue: %s",lazyValue))
+        println(format("lazyValue: %s",lazyValue)) //lazyValue: ru.perm.v.kotlin_in_action.lazy.ClassWithHeavyInitialization@184fb68d
+        // >after get first lazyValue, numberOfInitializations: 1
         println(format("after get first lazyValue, numberOfInitializations: %s",numberOfInitializations.get()))
 
-        println(format("lazyValue: %s",lazyValue))
+        // >start numberOfInitializations: 1
+        println(format("lazyValue: %s",lazyValue)) //lazyValue: ru.perm.v.kotlin_in_action.lazy.ClassWithHeavyInitialization@184fb68d
+        // >after get first lazyValue, numberOfInitializations: 1
         println(format("after second get lazyValue, numberOfInitializations: %s",numberOfInitializations.get()))
 
         // then
