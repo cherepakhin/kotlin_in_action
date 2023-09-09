@@ -3,18 +3,11 @@ import org.junit.jupiter.api.Test
 
 /**
 Встроен прямо в язык в виде ключевого слова OBJECT:
-
-````kotlin
-
-object JustSingleton {
-val value : String = "Just a value"
-}
-````
-
-Теперь поле JustSingleton.value будет доступно из любого места в пакете.
+Инициализируется лениво, т.е. будет нициализировано НЕ ПРИ ЗАГРУЗКЕ, а при ПЕРВОМ обращении
  */
 
 object JustSingleton {
+    // Теперь поле JustSingleton.value будет доступно из любого места в пакете.
     val value : String = "Just a value"
 }
 
