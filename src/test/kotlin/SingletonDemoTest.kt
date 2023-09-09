@@ -2,17 +2,17 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 /**
-Встроен прямо в язык в виде ключевого слова OBJECT:
+Singleton встроен прямо в язык в виде ключевого слова OBJECT:
 Инициализируется лениво, т.е. будет инициализировано НЕ ПРИ ЗАГРУЗКЕ, а при ПЕРВОМ обращении
-STATIC в Kotlin нет
+STATIC в Kotlin нет, поэтому такой прием с ключевым словом "object"
  */
 
-object JustSingleton { // OBJECT! не CLASS
+object JustSingleton { // OBJECT! не CLASS - сразу создается
     // Теперь поле JustSingleton.simpleVal будет доступно из любого места в пакете.
     val simpleVal : String = "Singleton value"
 }
 
-class NormalClass { // а тут обычный class (не "object")
+class NormalClass { // а тут обычный class:  не "object", а class
     val simpleVal : String = "Typical value"
 }
 
