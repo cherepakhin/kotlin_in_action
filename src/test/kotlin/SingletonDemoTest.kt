@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test
 Инициализируется лениво, т.е. будет нициализировано НЕ ПРИ ЗАГРУЗКЕ, а при ПЕРВОМ обращении
  */
 
-object JustSingleton {
-    // Теперь поле JustSingleton.value будет доступно из любого места в пакете.
+object JustSingleton { // object!
+    // Теперь поле JustSingleton.simpleVal будет доступно из любого места в пакете.
     val simpleVal : String = "Singleton value"
 }
 
-class NormalClass {
+class NormalClass { // а тут обычный class (не "object")
     val simpleVal : String = "Typical value"
 }
 
