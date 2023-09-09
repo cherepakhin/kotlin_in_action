@@ -8,7 +8,7 @@ import kotlin.system.measureTimeMillis
 Singleton встроен прямо в язык в виде ключевого слова OBJECT:
 Инициализируется лениво при ПЕРВОМ обращении(НЕ ПРИ ЗАГРУЗКЕ)
 STATIC в Kotlin нет, поэтому такой прием с ключевым словом "object"
-*/
+ */
 object SlowSingleton {
     val value: String
 
