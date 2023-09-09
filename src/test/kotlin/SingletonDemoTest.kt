@@ -3,10 +3,11 @@ import org.junit.jupiter.api.Test
 
 /**
 Встроен прямо в язык в виде ключевого слова OBJECT:
-Инициализируется лениво, т.е. будет нициализировано НЕ ПРИ ЗАГРУЗКЕ, а при ПЕРВОМ обращении
+Инициализируется лениво, т.е. будет инициализировано НЕ ПРИ ЗАГРУЗКЕ, а при ПЕРВОМ обращении
+STATIC в Kotlin нет
  */
 
-object JustSingleton { // object!
+object JustSingleton { // OBJECT! не CLASS
     // Теперь поле JustSingleton.simpleVal будет доступно из любого места в пакете.
     val simpleVal : String = "Singleton value"
 }
@@ -25,8 +26,8 @@ class SingletonDemoTest {
 
     @Test
     fun useNormalClass() {
-        // А тут обращение к полю ЭКЗЕМПЛЯРА КЛАССА (экземпляр создается NormalClass() ),
-        // И не к Классу, как в примере JustSingleton
+        // А тут обращение к полю ЭКЗЕМПЛЯРА КЛАССА, экземпляр создается NormalClass().simpleVal
+        // И не к Классу, как в примере JustSingleton.simpleVal
         Assertions.assertEquals("Typical value", NormalClass().simpleVal)
     }
 }
