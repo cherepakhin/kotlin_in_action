@@ -1,13 +1,14 @@
 package ru.perm.v.kotlin_in_action.base
 
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class ArrTest {
 
     @Test
     internal fun getByIndex() {
-        // listOf = неизменяемый. Нельзя добавить элементы. Изменяемый arrayListOf()
+        // listOf = неизменяемый. Нельзя добавить элементы. Изменяемый arrayListOf() или mutableListOf()
         val list = listOf("aaa", "bbb")
 //        list.add() - нет такого метода, т.к. неизменяемый
         Assertions.assertEquals("aaa", list[0])
@@ -22,6 +23,7 @@ class ArrTest {
         list.add("ccc")
         Assertions.assertEquals("ccc", list.get(2))
     }
+
     @Test
     internal fun unmuttableToMuttable() {
         // почти тоже самое, что и тест выше addToList()
@@ -55,6 +57,13 @@ class ArrTest {
     }
 
     @Test
+    internal fun mutableListTest() {
+        val mutableList = mutableListOf<String>("aaa", "bbb")
+        assertTrue(mutableList.add("ccc"))
+        Assertions.assertEquals(listOf("aaa", "bbb", "ccc"), mutableList)
+    }
+
+    @Test
     internal fun unmuttableToMuttableForObject() {
         class MyObj {
             var str = "" // желательно все-таки тип указывать  s:String
@@ -66,7 +75,7 @@ class ArrTest {
                 this.str = s
             }
         }
-        // listOf - unmuttable, для изменяемого mutableListOf<MyObj>()
+        // listOf - unmuttable, для изменяемого нужно использовать mutableListOf<MyObj>()
         val myUnmutableList = listOf<MyObj>(MyObj("VAL_1"), MyObj("VAL_2"))
         myUnmutableList.get(1).str = "NEW_VAL" // setStr() нет такого метода. подробности в ConstructorTest.kt
         // В myUnmutableList значение изменилось, т.к. var str,
