@@ -28,7 +28,7 @@ class ArrTest {
         // val - неизменяемое. Нельзя изменить ссылку,
         // но добавить элемент можно
 
-        // "listOf" - UNMUTTABLE. Нельзя добавлять/удалять. ERROR on myUnmutableList.add()
+        // "listOf" - UNMUTTABLE. Нельзя добавлять/удалять т.к. не arrayListOf(). ERROR on myUnmutableList.add()
         // в общем, константная константа. НИЧЕГО БОЛЬШЕ НЕЛЬЗЯ
         val myUnmutableList = listOf<String>("aaa")
         // и ссылку myUnmutableList менять нельзя (VAL!). ERROR при myUnmutableList = listOf()
@@ -59,7 +59,7 @@ class ArrTest {
         class MyObj {
             var str = "" // желательно все-таки тип указывать  s:String
 
-            constructor(s: String) { // warning. просит поменять на
+            constructor(s: String) { // warning. Подсказывает, что можно сделать проще:
                                     //        class MyObj(s: String) {
                                     //            var str = s
                                     //        }
