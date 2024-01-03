@@ -47,15 +47,15 @@ class TransferParamTest {
             PersonK(1, "NAME1", 1),
             PersonK(2, "NAME2", 2)
         )
-        val changedList = changeAndReturn_NEW_ListPerson(srcList)
+        val changedList = createNewListBySrcAndChangeElem0(srcList)
         // В srcList элемент тоже ИЗМЕНИЛСЯ,
         // несмотря на то, что был создан новый ArrayList в функции changeAndReturn_NEW_ListPerson
         assertEquals(srcList.get(0), changedList.get(0))
-        assertTrue(srcList.get(0).equals(PersonK(1, "CHANGED_NAME", 1)))
-        assertTrue(changedList.get(0).equals(PersonK(1, "CHANGED_NAME", 1)))
+        assertEquals(srcList.get(0), PersonK(1, "CHANGED_NAME", 1))
+        assertEquals(changedList.get(0), PersonK(1, "CHANGED_NAME", 1))
     }
 
-    private fun changeAndReturn_NEW_ListPerson(srcList: List<PersonK>): List<PersonK> {
+    private fun createNewListBySrcAndChangeElem0(srcList: List<PersonK>): List<PersonK> {
         // значения те же самые, не копируются, просто создается новая ссылка на тот же list
         val ret = ArrayList(srcList)
         ret[0].name = "CHANGED_NAME"

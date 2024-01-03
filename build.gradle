@@ -5,7 +5,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'org.jetbrains.kotlin.jvm' version '1.7.22'
 	id 'org.jetbrains.kotlin.plugin.spring' version '1.7.22'
-	id 'io.qameta.allure' version '2.10.0' // version 2.10.0 WORK! NO WARNINGS for generate allure report
+	id 'io.qameta.allure' version '2.10.0'
+//    id 'org.jetbrains.kotlin.jvm' version '1.7.10' // version 2.10.0 WORK! NO WARNINGS for generate allure report
 }
 
 group = 'ru.perm.v'
@@ -26,6 +27,7 @@ dependencies {
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 tasks.withType(KotlinCompile) {
@@ -38,4 +40,14 @@ tasks.withType(KotlinCompile) {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

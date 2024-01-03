@@ -19,7 +19,7 @@ class AssignTest {
     @Test
     internal fun assign() {
         a = "-" // при присвоении(!) сработает сеттер (см. лог). В присвоении спрятан СЕТТЕР.
-//        a = 1 //RED ERROR. Класс д.б. String, т.к. тип objectа уже определен выше в var a = ""
+//        a = 1 //RED ERROR. Класс д.б. String, т.к. тип object уже определен выше в var a = ""
         Assertions.assertEquals("-", a)
     }
 
@@ -27,7 +27,7 @@ class AssignTest {
     internal fun testClassB() {
         // Обычное, типичное определение класса. Не укороченное как var a.
         class B {
-            private var field1 =0
+            private var field1 = 10000 // явно тип не указан, определяется из контекста
             fun setField1(newVal:Int) {
                 field1 = newVal
             }

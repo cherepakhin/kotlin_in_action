@@ -68,7 +68,7 @@ class ArrTest {
         class MyObj {
             var str = "" // желательно все-таки тип указывать  s:String
 
-            constructor(s: String) { // warning. Подсказывает, что можно сделать проще:
+            constructor(s: String) { // warning. Подсказывает, что конструктор один и можно сделать проще:
                                     //        class MyObj(s: String) {
                                     //            var str = s
                                     //        }

@@ -4,7 +4,7 @@ package ru.perm.v.kotlin_in_action
 data class PersonK(
     val id: Int, // задается только в конструкторе. VAL после присвоения менять нельзя,
     // неизменяемое. Нет сеттера. Присвоение только через конструктор
-    var name: String, // VAR менять после присвоения можно
+    var name: String, // VAR можно менять после присвоения
     var age: Int? // nullable
 ) {
     var comment: String = "-"

@@ -8,8 +8,9 @@ class PersonUUIDTest {
     @Test
     fun generateNew() {
         val person = PersonUUID("NAME")
-        println(person.id)
         assertEquals("NAME", person.name)
+        println(person.id) // id will be assigned in constructor
+        assertNotNull(person.id)
     }
 
     @Test
@@ -18,9 +19,6 @@ class PersonUUIDTest {
         val person2 = PersonUUID("NAME")
         println(person1.id)
         println(person2.id)
-        assertNotEquals(person1.id,person2.id)
+        assertNotEquals(person1.id, person2.id)
     }
-
-
-
 }
