@@ -67,7 +67,7 @@ class MapFlatMapTest {
     }
 
     @Test
-    fun sumList() {
+    fun removeDuplicate() {
         val product11 = Product(11, "Product11")
         val stock1 = Stock(
             1, "stock1", listOf(
