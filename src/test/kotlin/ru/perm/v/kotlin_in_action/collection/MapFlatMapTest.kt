@@ -89,7 +89,7 @@ class MapFlatMapTest {
         assertEquals(7, sumProducts.size)
         assertEquals(listOf(12, 13, 14, 11, 22, 11, 23), sumProducts.stream().map { it.id }. toList())
 
-        val removedDuplicate = sumProducts.toMutableSet().toList() // duplicate product11 REMOVED!!! Cause: to...SET()
+        val removedDuplicate = sumProducts.toMutableSet().toList() // duplicate product11 REMOVED!!! Cause: toMutableSET()
         assertEquals(6, removedDuplicate.size)
         assertEquals(listOf(12, 13, 14, 11, 22, 23), removedDuplicate.stream().map { it.id }. toList())
     }
