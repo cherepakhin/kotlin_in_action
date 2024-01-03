@@ -85,7 +85,7 @@ class MapFlatMapTest {
             )
         )
 //                            [12, 13, 14, 11]          [22, 23]
-        val sumProducts=(stock1.products.toList() + stock2.products.toList())//.toMutableSet().toList()
+        val sumProducts=(stock1.products.toList() + stock2.products.toList())
         assertEquals(7, sumProducts.size)
         val removedDuplicate = sumProducts.toMutableSet().toList() // duplicate product11 REMOVED!!! Cause: .toMutableSet()
         assertEquals(6, removedDuplicate.size)
