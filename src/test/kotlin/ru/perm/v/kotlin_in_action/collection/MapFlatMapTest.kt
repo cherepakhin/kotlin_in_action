@@ -2,6 +2,7 @@ package ru.perm.v.kotlin_in_action.collection
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.streams.toList
 
 /**
  * Различия между map() и flatmap()
@@ -33,7 +34,7 @@ class MapFlatMapTest {
     open class Stock(val id: Int = 0, val name: String = "", val products: List<Product>)
 
     @Test
-    internal fun mapTest() {
+    fun mapTest() {
         val product11 = Product(11, "Product11")
         val stock1 = Stock(
             1, "stock1", listOf(
@@ -62,5 +63,32 @@ class MapFlatMapTest {
 
         // delete duplicates https://www.baeldung.com/kotlin/collections-remove-duplicates
         assertEquals(6, flatmapProducts.toMutableSet().toList().size)
+
+    }
+
+    @Test
+    fun sumList() {
+        val product11 = Product(11, "Product11")
+        val stock1 = Stock(
+            1, "stock1", listOf(
+                Product(12, "Product12"),
+                Product(13, "Product13"),
+                Product(14, "Product14"),
+                product11
+            )
+        )
+        val stock2 = Stock(
+            2, "stock2", listOf(
+                Product(22, "Product22"),
+                product11, // as in stock1[0]
+                Product(23, "Product23")
+            )
+        )
+//                            [12, 13, 14, 11]          [22, 23]
+        val sumProducts=(stock1.products.toList() + stock2.products.toList())//.toMutableSet().toList()
+        assertEquals(7, sumProducts.size)
+        val removedDuplicate = sumProducts.toMutableSet().toList() // duplicate product11 REMOVED!!! Cause: .toMutableSet()
+        assertEquals(6, removedDuplicate.size)
+        assertEquals(listOf(12, 13, 14, 11, 22, 23), removedDuplicate.stream().map { it.id }. toList())
     }
 }
