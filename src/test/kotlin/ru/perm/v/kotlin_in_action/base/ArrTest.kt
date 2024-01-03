@@ -1,8 +1,9 @@
 package ru.perm.v.kotlin_in_action.base
 
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ArrTest {
 
@@ -11,8 +12,18 @@ class ArrTest {
         // listOf = неизменяемый. Нельзя добавить элементы. Изменяемый arrayListOf() или mutableListOf()
         val list = listOf("aaa", "bbb")
 //        list.add() - нет такого метода, т.к. неизменяемый
-        Assertions.assertEquals("aaa", list[0])
-        Assertions.assertEquals("aaa", list.get(0))
+        assertEquals("aaa", list[0])
+        assertEquals("aaa", list.get(0))
+    }
+
+    @Test
+    fun checkMessageForNotExistIndex() {
+        // listOf = неизменяемый. Нельзя добавить элементы. Изменяемый arrayListOf() или mutableListOf()
+        val list = listOf("aaa", "bbb")
+        val exception = assertThrows<Exception> {
+            list.get(100000)
+        }
+        assertEquals("Index 100000 out of bounds for length 2", exception.message)
     }
 
     @Test
@@ -21,7 +32,7 @@ class ArrTest {
         val list = arrayListOf("aaa", "bbb")
         // но добавить элемент можно, т.к. arrayListOf позволяет добавлять, в отличие от listOf
         list.add("ccc")
-        Assertions.assertEquals("ccc", list.get(2))
+        assertEquals("ccc", list.get(2))
     }
 
     @Test
@@ -44,23 +55,23 @@ class ArrTest {
         myMutableList.addAll(myUnmutableList) // так сделать изменяемым
         myMutableList.add("ccc")
         myMutableList.add("ddd")
-        Assertions.assertEquals("aaa", myMutableList.get(0))
-        Assertions.assertEquals("ddd", myMutableList.get(2))
+        assertEquals("aaa", myMutableList.get(0))
+        assertEquals("ddd", myMutableList.get(2))
 
         myMutableList.set(0, "0000")
-        Assertions.assertEquals("0000", myMutableList.get(0))
+        assertEquals("0000", myMutableList.get(0))
         var elem = myMutableList.get(0)
         elem = "2222"
         // значение в myMutableList[0] не изменилось. Строка передалась ПО ЗНАЧЕНИЮ.
         // С объектом НЕ ТАК, т.к. передается ссылка, не значение. См.ниже unmuttableToMuttableForObject()
-        Assertions.assertEquals("0000", myMutableList.get(0))
+        assertEquals("0000", myMutableList.get(0))
     }
 
     @Test
     internal fun mutableListTest() {
         val mutableList = mutableListOf<String>("aaa", "bbb")
         assertTrue(mutableList.add("ccc"))
-        Assertions.assertEquals(listOf("aaa", "bbb", "ccc"), mutableList)
+        assertEquals(listOf("aaa", "bbb", "ccc"), mutableList)
     }
 
     @Test
@@ -84,7 +95,7 @@ class ArrTest {
         // Итого: сам myUnmutableList неизменяемый,
         // myUnmutableList[0] = MyObj("1") //ERROR. Подсказывает поменять на val muttableList = mutableListOf<MyObj>()
         // но значения в объектах менять можно
-        Assertions.assertEquals("NEW_VAL", myUnmutableList.get(1).str)
+        assertEquals("NEW_VAL", myUnmutableList.get(1).str)
         // val o = MyObj() нет такого конструктора
     }
 }
