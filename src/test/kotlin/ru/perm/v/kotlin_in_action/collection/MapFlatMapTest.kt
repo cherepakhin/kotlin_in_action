@@ -84,7 +84,7 @@ class MapFlatMapTest {
                 Product(23, "Product23")
             )
         )
-//                            [12, 13, 14, 11]          [22, 11, 23]
+//                            [12, 13, 14, _11_]          [22, _11_, 23]
         val sumProducts=(stock1.products.toList() + stock2.products.toList())
         assertEquals(7, sumProducts.size)
         assertEquals(listOf(12, 13, 14, 11, 22, 11, 23), sumProducts.stream().map { it.id }. toList())
