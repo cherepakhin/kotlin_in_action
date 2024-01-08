@@ -3,7 +3,6 @@ package ru.perm.v.kotlin_in_action.sealed
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
 
 /**
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
