@@ -3,6 +3,13 @@ package ru.perm.v.kotlin_in_action.sealed
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
+/**
+ * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
+ * который ограничивает возможность наследования от него.
+ * Он используется для создания ограниченного набора подклассов,
+ * которые обычно представляют различные состояния или варианты в контексте паттерна
+ * "sealed class hierarchy" или "алгебры типов".
+ */
 class SealedTest {
     sealed class MyResult {
         data class Success(val data: String) : MyResult()
