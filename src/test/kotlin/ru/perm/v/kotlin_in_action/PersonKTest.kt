@@ -22,4 +22,10 @@ internal class PersonKTest {
         val person = PersonK(100, "NAME", 10)
         assertEquals("id=100, name=NAME, age=10", person.getDescription())
     }
+
+    @Test
+    fun testToString() {
+        val person = PersonK(100, "NAME", 10)
+        assertEquals("PersonK(id=100, name=NAME, age=10)", person.toString())
+    }
 }
