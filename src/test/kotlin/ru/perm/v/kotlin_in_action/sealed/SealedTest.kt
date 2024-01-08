@@ -1,7 +1,9 @@
 package ru.perm.v.kotlin_in_action.sealed
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 
 /**
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
@@ -27,11 +29,6 @@ class SealedTest {
     fun successTest() {
         val result = getResult("DATA")
         assertEquals(MyResult.Success("DATA"), result)
-//        when (result) {
-//            is MyResult.Success -> assertEquals(MyResult.Success("DATA"), result)
-//            is MyResult.Error -> println("Error: ${result.message}")
-//            MyResult.Loading -> println("Loading...")
-//        }
     }
 
     @Test
@@ -46,4 +43,13 @@ class SealedTest {
         assertEquals(MyResult.Loading, result)
     }
 
+    @Test
+    fun whehMyResultErrorTest() {
+        val result = getResult("DATA")
+        when (result) {
+            is MyResult.Success -> assertEquals(MyResult.Success("DATA"), result);
+            is MyResult.Error -> fail();
+            is MyResult.Loading -> fail();
+        }
+    }
 }
