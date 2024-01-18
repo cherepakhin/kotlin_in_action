@@ -1,9 +1,7 @@
 package ru.perm.v.kotlin_in_action.base
 
-import kotlinx.coroutines.flow.asFlow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.springframework.expression.Operation
 import ru.perm.v.kotlin_in_action.PersonK
 
 class LambdaFuncTest {
@@ -42,7 +40,7 @@ class LambdaFuncTest {
         // Типы параметров в лямбде необязательны, если они могут быть выведены:
         //fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
-        assertEquals("Elements: 1 2 3 4 5", "$joinedToString")
+        assertEquals(/* expected = */ "Elements: 1 2 3 4 5", /* actual = */ joinedToString)
     }
 
     @Test
@@ -56,7 +54,8 @@ class LambdaFuncTest {
         // fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
         // задано выражение и результат этого выражения будет return (сам "return" можно не указывать)
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
-        assertEquals("Elements: 1 2 3 4 5", "$joinedToString")
+
+        assertEquals("Elements: 1 2 3 4 5", "$joinedToString") // for example calculate joinedToString
     }
 
     @Test
@@ -117,7 +116,7 @@ class LambdaFuncTest {
 
     @Test
     fun sumIdsWithFold() {
-        val listPerson=listOf(
+        val listPerson = listOf(
             PersonK(10, "NAME10", 10),
             PersonK(20, "NAME20", 20),
             PersonK(30, "NAME30", null)
@@ -130,7 +129,7 @@ class LambdaFuncTest {
 
     @Test
     fun sumAgeWithFilterAndFold() {
-        val listPerson=listOf(
+        val listPerson = listOf(
             PersonK(10, "NAME10", 10),
             PersonK(20, "NAME20", 20),
             PersonK(30, "NAME30", null)
@@ -145,7 +144,7 @@ class LambdaFuncTest {
 
     @Test
     fun listWithFilterAgeNotNull() {
-        val listPerson=listOf(
+        val listPerson = listOf(
             PersonK(10, "NAME10", 10),
             PersonK(20, "NAME20", 20),
             PersonK(30, "NAME30", null)
@@ -159,8 +158,8 @@ class LambdaFuncTest {
     }
 
     @Test
-    fun foldWithFilterAgeNotNull() {
-        val listPerson=listOf(
+    fun sumAgeWithFilterAgeNotNull() {
+        val listPerson = listOf(
             PersonK(10, "NAME10", 10),
             PersonK(20, "NAME20", 20),
             PersonK(30, "NAME30", null)
@@ -168,7 +167,6 @@ class LambdaFuncTest {
 
         val sumAge = listPerson
             .filter { it.age != null }.fold(0, { acc, personK -> acc + personK.age!! })
-
 
         assertEquals(30, sumAge)
     }
