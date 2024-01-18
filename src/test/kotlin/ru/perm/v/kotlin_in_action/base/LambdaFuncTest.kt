@@ -129,7 +129,7 @@ class LambdaFuncTest {
     }
 
     @Test
-    fun sumIdsWithFilterAndFold() {
+    fun sumAgeWithFilterAndFold() {
         val listPerson=listOf(
             PersonK(10, "NAME10", 10),
             PersonK(20, "NAME20", 20),
@@ -138,7 +138,7 @@ class LambdaFuncTest {
 
         val sumAge = listPerson
             .filter { it.age != null }
-            .fold(0, { acc, personK -> acc + personK.id })
+            .fold(0, { acc, personK -> acc + personK.age!! })
 
         assertEquals(30, sumAge)
     }
