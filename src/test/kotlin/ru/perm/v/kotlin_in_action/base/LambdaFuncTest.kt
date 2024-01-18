@@ -144,6 +144,36 @@ class LambdaFuncTest {
     }
 
     @Test
+    fun listWithFilterAgeNotNull() {
+        val listPerson=listOf(
+            PersonK(10, "NAME10", 10),
+            PersonK(20, "NAME20", 20),
+            PersonK(30, "NAME30", null)
+        )
+
+        val persons = listPerson
+            .filter { it.age != null }
+
+
+        assertEquals(2, persons.size)
+    }
+
+    @Test
+    fun foldWithFilterAgeNotNull() {
+        val listPerson=listOf(
+            PersonK(10, "NAME10", 10),
+            PersonK(20, "NAME20", 20),
+            PersonK(30, "NAME30", null)
+        )
+
+        val sumAge = listPerson
+            .filter { it.age != null }.fold(0, { acc, personK -> acc + personK.age!! })
+
+
+        assertEquals(30, sumAge)
+    }
+
+    @Test
     fun lambdaPairAndDSL() {
         // Kotlin DSL: Теория и Практика
         // https://habr.com/ru/companies/haulmont/articles/341402/
