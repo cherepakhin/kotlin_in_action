@@ -11,7 +11,9 @@ class AlsoTest {
             fun incrementAge() { age++ }
         }
 
-        val alsoPerson= Person("Tom", 10, "Moscow").also { it.moveTo("SPb") }.also { it.incrementAge() }
+        val alsoPerson= Person("Tom", 10, "Moscow")
+            .also { it.moveTo("SPb") }
+            .also { it.incrementAge() }
 
         assertEquals(Person("Tom", 11, "SPb"), alsoPerson)
     }
