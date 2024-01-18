@@ -37,7 +37,15 @@ class SealedTest {
             constructor() : super() {
                 this.varLateInt = 10
             }
+
+            constructor(varLateInt: Int) {
+                this.varLateInt = varLateInt
+            }
+
         }
+
+        assertEquals(10, RegularClass().varLateInt)
+        assertEquals(100, RegularClass(100).varLateInt)
 
         class InheritFromRegularClass : RegularClass() {
             var varInheritFromRegularClass: Int = 100
@@ -46,6 +54,18 @@ class SealedTest {
         assertEquals(10, InheritFromRegularClass().varLateInt)
         assertEquals(-1, InheritFromRegularClass().varRegularClass)
         assertEquals(100, InheritFromRegularClass().varInheritFromRegularClass)
+
+        open class InheritFromOpenClass : RegularClass() {
+            var openVar: Int = 300
+            var varInheritFromOpenClass: Int = 200
+        }
+        assertEquals(200, InheritFromOpenClass().varInheritFromOpenClass)
+        assertEquals(300, InheritFromOpenClass().openVar)
+
+        open class InheritFromInheritClass : InheritFromOpenClass() {
+        }
+        assertEquals(200, InheritFromInheritClass().varInheritFromOpenClass)
+        assertEquals(300, InheritFromInheritClass().openVar)
     }
 
     fun getResult(str: String = ""): MySealedClassResult {
