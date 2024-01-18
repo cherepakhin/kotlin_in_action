@@ -54,6 +54,7 @@ class LambdaFuncTest {
             assertEquals(/* expected = */ "Elements: 1 2 3 4 5", /* actual = */ it)
         }
     }
+
     @Test
     fun sampleFoldForStringTest() {
         val items = listOf(1, 2, 3, 4, 5)
@@ -66,8 +67,8 @@ class LambdaFuncTest {
         // задано выражение и результат этого выражения будет return (сам "return" можно не указывать)
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
 
-        assertEquals("Elements: 1 2 3 4 5", "$joinedToString") // WARNING "$..." for example calculate joinedToString
         assertEquals("Elements: 1 2 3 4 5", joinedToString)
+        assertEquals("Elements: 1 2 3 4 5", "$joinedToString") // WARNING "$..." for example calculate joinedToString
     }
 
     @Test
