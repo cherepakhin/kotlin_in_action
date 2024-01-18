@@ -8,26 +8,20 @@ import kotlin.properties.Delegates
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
  * который ограничивает возможность наследования от него.
  * sealed class MyResult {...}
+
  * class InheritFromMyResult : MyResult() // ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects
  * обычное наследование недоступно, т.к. sealed class MyResult {...}
- * демо обычного наследования в InheritTest.kt
- * Он используется для создания ограниченного набора подклассов,
+ *
+ * SEALED.Он используется для создания ограниченного набора подклассов,
  * которые обычно представляют различные состояния или варианты в контексте паттерна
  * "sealed class hierarchy" или "алгебры типов".
  * В примере ниже Success и Error являются подклассами sealed class.
  * объекты Success и Error являются экземплярами конкретных подклассов.
+
  */
 class SealedTest {
-    // sealed class (запечатанный класс) представляет собой специальный вид класса,
-    // который ограничивает возможность наследования от него.
-    // Здесь демо создания sealed class (запечатанного класса) и data classов (классов с данными) в нем
-    sealed class MySealedClassResult {
-        // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
-        data class Success(val data: String) : MySealedClassResult()
-        data class Error(val message: String) : MySealedClassResult()
-        object Loading : MySealedClassResult()
-    }
 
+    // Обычное наследование
     @Test
     fun tryInherit() {
         open class RegularClass {
@@ -47,15 +41,24 @@ class SealedTest {
         assertEquals(10, RegularClass().varLateInt)
         assertEquals(100, RegularClass(100).varLateInt)
 
-        class InheritFromRegularClass : RegularClass() {
-            var varInheritFromRegularClass: Int = 100
+        class InheritFromRegularClass : RegularClass {
+            var varFromInheritRegularClass: Int = 100
+
+            constructor()
+
+            constructor(i: Int) {
+                this
+                this.varFromInheritRegularClass = i
+            }
+
         }
 
-        assertEquals(10, InheritFromRegularClass().varLateInt)
-        assertEquals(-1, InheritFromRegularClass().varRegularClass)
-        assertEquals(100, InheritFromRegularClass().varInheritFromRegularClass)
+        InheritFromRegularClass(300)
+        assertEquals(10,  InheritFromRegularClass().varLateInt)
+        assertEquals(-1,  InheritFromRegularClass().varRegularClass)
+        assertEquals(100, InheritFromRegularClass().varFromInheritRegularClass)
 
-        open class InheritFromOpenClass : RegularClass() { // open - можно расширять
+        open class InheritFromOpenClass : RegularClass() { // RegularClass ->open - можно расширять
             var openVar: Int = 300
             var varInheritFromOpenClass: Int = 200
         }
@@ -66,6 +69,16 @@ class SealedTest {
         }
         assertEquals(200, InheritFromInheritClass().varInheritFromOpenClass)
         assertEquals(300, InheritFromInheritClass().openVar)
+    }
+
+    // sealed class (запечатанный класс) представляет собой специальный вид класса,
+    // который ограничивает возможность наследования от него.
+    // Здесь демо создания sealed class (запечатанного класса) с data class-ами (классов с данными) в нем
+    sealed class MySealedClassResult {
+        // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
+        data class Success(val data: String) : MySealedClassResult()
+        data class Error(val message: String) : MySealedClassResult()
+        object Loading : MySealedClassResult()
     }
 
     fun getResult(str: String = ""): MySealedClassResult {
