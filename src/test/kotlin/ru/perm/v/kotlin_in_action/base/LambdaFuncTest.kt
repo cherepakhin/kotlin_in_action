@@ -1,5 +1,6 @@
 package ru.perm.v.kotlin_in_action.base
 
+import kotlinx.coroutines.flow.asFlow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.expression.Operation
@@ -84,7 +85,7 @@ class LambdaFuncTest {
     fun lambdaWithBodyReturnTest() {
         val simpleLambdaWithBodyAndReturn: () -> String = {
             val v = "Return val"
-            v // return можно не указывать не нужен. Результатом будет "v"
+            v // return можно не указывать, не нужен. Результатом будет "v"
         }
         assertEquals("Return val", simpleLambdaWithBodyAndReturn())
 
@@ -92,7 +93,7 @@ class LambdaFuncTest {
             val val1 = "VAL1"
             val val2 = "VAL2"
             "$val1 $val2" // return можно не указывать. Результатом будет вычисленное значение
-            // val1+" "+val2 // можно и так. Idea рекомендует то, что выше "$val1 $val2"
+            // val1+" "+val2 // можно и так. Idea рекомендует то, что выше "$val1 $val2" с явным указанием, что речь идет о строках
         }
         assertEquals("VAL1 VAL2", simpleLambdaWithBodyAndReturn1())
     }
@@ -108,8 +109,38 @@ class LambdaFuncTest {
     }
 
     @Test
-    internal fun operationableTest() {
-        var operation: Operation
+    fun reduceTest() {
+        val listUsers = listOf("Tom", "Bob", "Kate", "Sam", "Alice")
+        val reducedValue = listUsers.reduce { a, b -> "$a $b" }
+        assertEquals("Tom Bob Kate Sam Alice", reducedValue)
+    }
+
+    @Test
+    fun sumIdsWithFold() {
+        val listPerson=listOf(
+            PersonK(10, "NAME10", 10),
+            PersonK(20, "NAME20", 20),
+            PersonK(30, "NAME30", null)
+        )
+
+        val sumIds = listPerson.fold(0, { acc, personK -> acc + personK.id })
+
+        assertEquals(60, sumIds)
+    }
+
+    @Test
+    fun sumIdsWithFilterAndFold() {
+        val listPerson=listOf(
+            PersonK(10, "NAME10", 10),
+            PersonK(20, "NAME20", 20),
+            PersonK(30, "NAME30", null)
+        )
+
+        val sumAge = listPerson
+            .filter { it.age != null }
+            .fold(0, { acc, personK -> acc + personK.id })
+
+        assertEquals(30, sumAge)
     }
 
     @Test
