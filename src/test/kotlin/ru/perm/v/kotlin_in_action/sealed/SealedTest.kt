@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 /**
- * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
- * который ограничивает возможность наследования от него.
- * sealed class MyResult {...}
-
  * class InheritFromMyResult : MyResult() // ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects
  * обычное наследование недоступно, т.к. sealed class MyResult {...}
  *
@@ -70,8 +66,9 @@ class SealedTest {
         assertEquals(300, InheritFromInheritClass().openVar)
     }
 
-    // sealed class (запечатанный класс) представляет собой специальный вид класса,
+    // В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
     // который ограничивает возможность наследования от него.
+    // sealed class MyResult {...}
     // Здесь демо создания sealed class (запечатанного класса) с data class-ами (классов с данными) в нем
     sealed class MySealedClassResult {
         // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
