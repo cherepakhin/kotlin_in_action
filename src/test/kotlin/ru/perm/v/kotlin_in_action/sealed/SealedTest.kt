@@ -2,7 +2,6 @@ package ru.perm.v.kotlin_in_action.sealed
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.properties.Delegates
 
 /**
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
@@ -47,7 +46,6 @@ class SealedTest {
             constructor()
 
             constructor(i: Int) {
-                this
                 this.varFromInheritRegularClass = i
             }
 
@@ -113,9 +111,9 @@ class SealedTest {
     fun whehMyResultErrorTest() {
         val result = getResult("DATA")
         when (result) {
-            is MySealedClassResult.Success -> assertEquals(MySealedClassResult.Success("DATA"), result);
-            is MySealedClassResult.Error -> fail();
-            is MySealedClassResult.Loading -> fail();
+            is MySealedClassResult.Success -> assertEquals(MySealedClassResult.Success("DATA"), result)
+            is MySealedClassResult.Error -> fail()
+            is MySealedClassResult.Loading -> fail()
         }
     }
 }
