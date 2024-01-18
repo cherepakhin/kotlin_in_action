@@ -55,7 +55,8 @@ class LambdaFuncTest {
         // задано выражение и результат этого выражения будет return (сам "return" можно не указывать)
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
 
-        assertEquals("Elements: 1 2 3 4 5", "$joinedToString") // for example calculate joinedToString
+        assertEquals("Elements: 1 2 3 4 5", "$joinedToString") // WARNING "$..." for example calculate joinedToString
+        assertEquals("Elements: 1 2 3 4 5", joinedToString)
     }
 
     @Test
