@@ -55,6 +55,7 @@ class SealedTest {
         assertEquals(10,  InheritFromRegularClass().varLateInt)
         assertEquals(-1,  InheritFromRegularClass().varRegularClass)
         assertEquals(100, InheritFromRegularClass().varFromInheritRegularClass)
+        assertEquals(200, InheritFromRegularClass(200).varFromInheritRegularClass)
 
         open class InheritFromOpenClass : RegularClass() { // RegularClass ->open - можно расширять
             var openVar: Int = 300
