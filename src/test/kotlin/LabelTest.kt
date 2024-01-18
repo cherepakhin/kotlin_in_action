@@ -5,9 +5,9 @@ class LabelTest {
     @Test
     internal fun simple() {
         var count = 0
-        loop@ for (i in 1..100) {
+        myloop@ for (i in 1..100) {
             for (j in 1..100) {
-                if (i == 3) break@loop
+                if (i == 3) break@myloop
                 count++
             }
         }

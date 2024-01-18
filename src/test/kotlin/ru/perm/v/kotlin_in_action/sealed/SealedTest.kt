@@ -1,7 +1,6 @@
 package ru.perm.v.kotlin_in_action.sealed
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.fail
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 /**
@@ -10,9 +9,15 @@ import org.junit.jupiter.api.Test
  * Он используется для создания ограниченного набора подклассов,
  * которые обычно представляют различные состояния или варианты в контексте паттерна
  * "sealed class hierarchy" или "алгебры типов".
+ * В примере ниже Success и Error являются подклассами sealed class.
+ * объекты Success и Error являются экземплярами конкретных подклассов.
  */
 class SealedTest {
+    // sealed class (запечатанный класс) представляет собой специальный вид класса,
+    // который ограничивает возможность наследования от него.
+    // Здесь демо создания sealed class (запечатанного класса) и data classов (классов с данными) в нем
     sealed class MyResult {
+        // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
         data class Success(val data: String) : MyResult()
         data class Error(val message: String) : MyResult()
         object Loading : MyResult()
@@ -26,8 +31,13 @@ class SealedTest {
 
     @Test
     fun successTest() {
+        // ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects
+        // class InheritDataClass : MyResult()
+
         val result = getResult("DATA")
+        assertEquals("Success(data=DATA)", result.toString())
         assertEquals(MyResult.Success("DATA"), result)
+        assertNotEquals(MyResult.Success("NOT DATA"), result)
     }
 
     @Test
