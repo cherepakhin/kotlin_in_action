@@ -80,6 +80,13 @@ class SealedTest {
         object Loading : MySealedClassResult()
     }
 
+    @Test
+    fun failInherit() {
+// ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects }
+//        class InheritFromMySealedClass : MySealedClassResult() { TODO("Not yet implemented")
+        assertTrue(true)
+    }
+
     fun getResult(str: String = ""): MySealedClassResult {
 
         if (str == "DATA") return MySealedClassResult.Success(str)
