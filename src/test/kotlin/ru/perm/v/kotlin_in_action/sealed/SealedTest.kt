@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test
 /**
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
  * который ограничивает возможность наследования от него.
+ * sealed class MyResult {...}
+ * class InheritFromMyResult : MyResult() // ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects
+ * обычное наследование недоступно, т.к. sealed class MyResult {...}
+ * демо обычного наследования в InheritTest.kt
  * Он используется для создания ограниченного набора подклассов,
  * которые обычно представляют различные состояния или варианты в контексте паттерна
  * "sealed class hierarchy" или "алгебры типов".
@@ -24,6 +28,7 @@ class SealedTest {
     }
 
     fun getResult(str: String = ""): MyResult {
+
         if (str == "DATA") return MyResult.Success(str)
         if (str == "ERROR") return MyResult.Error(str)
         return MyResult.Loading
@@ -31,8 +36,6 @@ class SealedTest {
 
     @Test
     fun successTest() {
-        // ERROR: This type is sealed, so it can be inherited by only its own nested classes or objects
-        // class InheritDataClass : MyResult()
 
         val result = getResult("DATA")
         assertEquals("Success(data=DATA)", result.toString())
