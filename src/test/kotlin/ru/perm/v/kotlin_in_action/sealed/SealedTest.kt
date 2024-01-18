@@ -2,6 +2,7 @@ package ru.perm.v.kotlin_in_action.sealed
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.properties.Delegates
 
 /**
  * В Kotlin, sealed class (запечатанный класс) представляет собой специальный вид класса,
@@ -20,18 +21,38 @@ class SealedTest {
     // sealed class (запечатанный класс) представляет собой специальный вид класса,
     // который ограничивает возможность наследования от него.
     // Здесь демо создания sealed class (запечатанного класса) и data classов (классов с данными) в нем
-    sealed class MyResult {
+    sealed class MySealedClassResult {
         // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
-        data class Success(val data: String) : MyResult()
-        data class Error(val message: String) : MyResult()
-        object Loading : MyResult()
+        data class Success(val data: String) : MySealedClassResult()
+        data class Error(val message: String) : MySealedClassResult()
+        object Loading : MySealedClassResult()
     }
 
-    fun getResult(str: String = ""): MyResult {
+    @Test
+    fun tryInherit() {
+        open class RegularClass {
+            var varLateInt: Int
+            var varRegularClass = -1
 
-        if (str == "DATA") return MyResult.Success(str)
-        if (str == "ERROR") return MyResult.Error(str)
-        return MyResult.Loading
+            constructor() : super() {
+                this.varLateInt = 10
+            }
+        }
+
+        class InheritFromRegularClass : RegularClass() {
+            var varInheritFromRegularClass: Int = 100
+        }
+
+        assertEquals(10, InheritFromRegularClass().varLateInt)
+        assertEquals(-1, InheritFromRegularClass().varRegularClass)
+        assertEquals(100, InheritFromRegularClass().varInheritFromRegularClass)
+    }
+
+    fun getResult(str: String = ""): MySealedClassResult {
+
+        if (str == "DATA") return MySealedClassResult.Success(str)
+        if (str == "ERROR") return MySealedClassResult.Error(str)
+        return MySealedClassResult.Loading
     }
 
     @Test
@@ -39,29 +60,29 @@ class SealedTest {
 
         val result = getResult("DATA")
         assertEquals("Success(data=DATA)", result.toString())
-        assertEquals(MyResult.Success("DATA"), result)
-        assertNotEquals(MyResult.Success("NOT DATA"), result)
+        assertEquals(MySealedClassResult.Success("DATA"), result)
+        assertNotEquals(MySealedClassResult.Success("NOT DATA"), result)
     }
 
     @Test
     fun errorTest() {
         val result = getResult("ERROR")
-        assertEquals(MyResult.Error("ERROR"), result)
+        assertEquals(MySealedClassResult.Error("ERROR"), result)
     }
 
     @Test
     fun loadingTest() {
         val result = getResult("")
-        assertEquals(MyResult.Loading, result)
+        assertEquals(MySealedClassResult.Loading, result)
     }
 
     @Test
     fun whehMyResultErrorTest() {
         val result = getResult("DATA")
         when (result) {
-            is MyResult.Success -> assertEquals(MyResult.Success("DATA"), result);
-            is MyResult.Error -> fail();
-            is MyResult.Loading -> fail();
+            is MySealedClassResult.Success -> assertEquals(MySealedClassResult.Success("DATA"), result);
+            is MySealedClassResult.Error -> fail();
+            is MySealedClassResult.Loading -> fail();
         }
     }
 }
