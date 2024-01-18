@@ -55,14 +55,14 @@ class SealedTest {
         assertEquals(-1, InheritFromRegularClass().varRegularClass)
         assertEquals(100, InheritFromRegularClass().varInheritFromRegularClass)
 
-        open class InheritFromOpenClass : RegularClass() {
+        open class InheritFromOpenClass : RegularClass() { // open - можно расширять
             var openVar: Int = 300
             var varInheritFromOpenClass: Int = 200
         }
         assertEquals(200, InheritFromOpenClass().varInheritFromOpenClass)
         assertEquals(300, InheritFromOpenClass().openVar)
 
-        open class InheritFromInheritClass : InheritFromOpenClass() {
+        class InheritFromInheritClass : InheritFromOpenClass() {
         }
         assertEquals(200, InheritFromInheritClass().varInheritFromOpenClass)
         assertEquals(300, InheritFromInheritClass().openVar)
