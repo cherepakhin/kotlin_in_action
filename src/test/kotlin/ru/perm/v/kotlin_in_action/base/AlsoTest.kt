@@ -7,12 +7,12 @@ class AlsoTest {
     @Test
     fun simple() {
         data class Person(var name: String, var age: Int, var city: String) {
-            fun moveTo(newCity: String) { city = newCity }
+            fun changeCity(newCity: String) { city = newCity }
             fun incrementAge() { age++ }
         }
 
         val alsoPerson= Person("Tom", 10, "Moscow")
-            .also { it.moveTo("SPb") }
+            .also { it.changeCity("SPb") }
             .also { it.incrementAge() }
 
         assertEquals(Person("Tom", 11, "SPb"), alsoPerson)
