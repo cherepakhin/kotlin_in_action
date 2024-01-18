@@ -37,12 +37,23 @@ class LambdaFuncTest {
         }
         assertEquals(15, printAndSumFunc)
 
-        // Типы параметров в лямбде необязательны, если они могут быть выведены:
-        //fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
-        val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
-        assertEquals(/* expected = */ "Elements: 1 2 3 4 5", /* actual = */ joinedToString)
     }
 
+    @Test
+    fun foldAlsoItemsTest() {
+        val items = listOf(1, 2, 3, 4, 5)
+        // Также можно использовать метод fold
+        // Типы параметров в лямбде необязательны, если они могут быть выведены:
+        // fold - функция свертывания для списков с начальным значением как аккум-р и функцией преобразование
+        val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
+
+        assertEquals(/* expected = */ "Elements: 1 2 3 4 5", /* actual = */ joinedToString)
+
+        // also!!!
+        items.fold("Elements:", { acc, i -> acc + " " + i }).also {
+            assertEquals(/* expected = */ "Elements: 1 2 3 4 5", /* actual = */ it)
+        }
+    }
     @Test
     fun sampleFoldForStringTest() {
         val items = listOf(1, 2, 3, 4, 5)
