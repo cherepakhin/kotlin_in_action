@@ -14,14 +14,14 @@ class ApplyAlsoDiffTest {
     @Test
     fun applyTest() {
         data class Person(var name: String, var age: Int, var city: String)
-        val person = Person("Tom", 10, "Moscow").apply { age = 20 } // нет it
+        val person = Person("Tom", 10, "Moscow").apply { age *= 2 } // нет it
         assertEquals(Person("Tom", 20, "Moscow"), person)
     }
 
     @Test
     fun alsoTest() {
         data class Person(var name: String, var age: Int, var city: String)
-        val person = Person("Tom", 10, "Moscow").also { it.age = 20 } // it!!!
+        val person = Person("Tom", 10, "Moscow").also { it.age *= 2 } // it!!!
         assertEquals(Person("Tom", 20, "Moscow"), person)
     }
 }
