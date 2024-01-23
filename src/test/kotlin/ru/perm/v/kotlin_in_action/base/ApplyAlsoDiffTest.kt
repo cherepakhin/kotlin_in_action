@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 /**
+ * Делегирование.
+ *
  * apply и also - выполнение сопутствующей задачи
  * Разница между apply и also заключается в том, что apply применяется к объекту, как бы внутри объекта,
  * а also обращается через "it"
