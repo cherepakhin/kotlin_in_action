@@ -31,8 +31,20 @@ class RegularTest {
         val content = "aaaa bbb cc d eeeee"
         val regex = """\W+""".toRegex()
 
-        val filtered = regex.split(content).filter { it.length > 2 }
+        val filtered = regex.split(content).filter { it.length > 2  }
 
         assertEquals(listOf("aaaa", "bbb", "eeeee"), filtered)
+    }
+
+    @Test
+    fun fromManual() {
+        val content = "Roses are red, Violets are blue"
+        val regex = """\W+""".toRegex()
+        val words= regex.split(content)
+
+        assertEquals(6, words.size)
+        assertEquals(listOf(
+            "Roses", "are", "red", "Violets", "are", "blue"), regex.split(content))
+
     }
 }
