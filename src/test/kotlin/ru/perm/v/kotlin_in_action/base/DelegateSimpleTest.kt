@@ -38,8 +38,8 @@ class DelegateSimpleTest {
         assertEquals("BaseIntImpl(x=10)", derivedInt.printBase())
 
         val baseStringImpl  = BaseStringImpl(10)
-        val derivedString = Derived(baseStringImpl)
         // здесь цепляется реализация из BaseStringImpl
+        val derivedString = Derived(baseStringImpl)
         assertEquals("BaseStringImpl(x=10)", derivedString.printBase())
     }
 }
