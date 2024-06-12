@@ -75,4 +75,14 @@ class ClassCreateTest {
         assertEquals("VALUE", p.name)
     }
 
+    @Test
+    fun inheritClassTest() {
+        class Example {
+            fun simpleMethod(): String { return "Class method" }
+        }
+        fun Example.extensionMethod(): String { return "Extension function" }
+
+        assertEquals("Class method", Example().simpleMethod())
+        assertEquals("Extension function", Example().extensionMethod())
+    }
 }
