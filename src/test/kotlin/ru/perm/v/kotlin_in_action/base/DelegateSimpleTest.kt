@@ -32,9 +32,9 @@ class DelegateSimpleTest {
         // НО заявлено что он МОЖЕТ ее реализоать (т.к. IBase) (или ПРЕДПОЛОЖИМ, что он должен предоставлять такую фнкцию)
         // выражением "by ..." реализуется эта функциональность (функциональщина в полный рост!)
         // и теперь метод printBase() может быть вызван в объекте derivedInt
+        // здесь цепляется реализация из BaseIntImpl
         val derivedInt = Derived(baseIntImpl) // delegate to BaseIntImpl
         // call delegate function BaseImpl.printBase()
-        // здесь цепляется реализация из BaseIntImpl
         assertEquals("BaseIntImpl(x=10)", derivedInt.printBase())
 
         val baseStringImpl  = BaseStringImpl(10)
