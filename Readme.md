@@ -50,5 +50,5 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 
 ### Примечания
 
-Делегаты в kotlin:
+Делегаты в kotlin:Паттерн делегирования (Delegation) https://java-ru-blog.blogspot.com/2020/02/delegation-pattern-java.html. Это техника, в которой объект выражает определенное поведение снаружи, но в реальности делегирует ответственность за реализацию этого поведения связанному объекту. В kotlin реализовано на уровне языка ключевым словом __by__ 
 [ru.perm.v.kotlin_in_action.base.DelegateCarTest](https://github.com/cherepakhin/kotlin_in_action/blob/master/src/test/kotlin/ru/perm/v/kotlin_in_action/base/DelegateCarTest.kt), [ru.perm.v.kotlin_in_action.base.DelegateSimpleTest](https://github.com/cherepakhin/kotlin_in_action/blob/master/src/test/kotlin/ru/perm/v/kotlin_in_action/base/DelegateSimpleTest.kt)
