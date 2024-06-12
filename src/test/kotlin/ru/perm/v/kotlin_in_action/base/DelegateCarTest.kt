@@ -79,12 +79,13 @@ class DelegateCarTest {
         //            }
         //        }
         // с помощью "by":
-        // иными словами, выражение "ICar by brand" расширяет поведение CarDelegateWithExtended поведением класса "brand"
-        // и эти функции МОГУТ БЫТЬ вызваны при обращении к методам класса CarDelegateWithExtended
+        // иными словами, выражение "ICar by brand" РАСШИРЯЕТ поведение CarDelegateWithExtended поведением класса "brand"
+        // Функции МОГУТ БЫТЬ вызваны при обращении к методам класса CarDelegateWithExtended
         // Это не extends CarDelegateWithExtended,
         // т.к. поведение класса CarDelegateWithExtended расширяется динамически
-        // Функции brand будут встроены в CarDelegateWithExtended,
+        // Функции brand будут ВСТРОЕНЫ в CarDelegateWithExtended,
         // (использовано ключевое слово "by")
+        // и могут буть вызваны при обращении к CarDelegateWithExtended
         class CarDelegateWithExtended(brand: ICar) : ICar by brand {
             fun extendedFunction(): String {
                 return this.drive() + " from extended function"
@@ -94,7 +95,6 @@ class DelegateCarTest {
         // CarDelegate будет делегировать поведение классу Mercedes
         // н.п. можно вызвать функцию Mercedes также как
         val carDelegateWithExtended = CarDelegateWithExtended(Mercedes())
-
         assertEquals(
             "Mercedes is driving from extended function", carDelegateWithExtended.extendedFunction()
         )
@@ -102,7 +102,7 @@ class DelegateCarTest {
         // mersedesFunc не определена ни в ICar, ни в CarDelegateWithExtended
         // поэтому недоступна в CarDelegateWithExtended и недоступна для делегирования
         // carDelegateWithExtended.mersedesFunc() - ERROR
-        // из Mercedes, конечно, рабротает
+        // из Mercedes, конечно, работает
         assertEquals("MERCEDES", Mercedes().mersedesFunc());
     }
 }
