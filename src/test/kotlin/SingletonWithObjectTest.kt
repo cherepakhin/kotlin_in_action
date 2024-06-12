@@ -10,7 +10,7 @@ class SingletonWithObjectTest {
     }
 
     @Test
-    fun test() {
+    fun callMethodFromSingleton() {
         assertEquals("from methodObj", Singleton.methodObj())
     }
 
