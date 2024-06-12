@@ -1,6 +1,5 @@
 package ru.perm.v.kotlin_in_action.base
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -11,7 +10,7 @@ class AssignTest {
         // Возможно определить какую-то сложную логику при присвоении (ниже println)
         set(value) { // сама переменная д.б. VAR! (var a). C VAL не прокатит (константа и т.п.)
             // сеттера НЕТ. вместо вызова сеттера, НУЖНО использовать '='
-            println(String.format("SETTING NEW VAL for a: %s", value))
+//            println(String.format("SETTING NEW VAL for a: %s", value))
             // тут "field" ключевое слово, доступ к значению именно "a"
             field = value
         }
@@ -20,7 +19,7 @@ class AssignTest {
     internal fun assign() {
         a = "-" // при присвоении(!) сработает сеттер (см. лог). В присвоении спрятан СЕТТЕР.
 //        a = 1 //RED ERROR. Класс д.б. String, т.к. тип object уже определен выше в var a = ""
-        Assertions.assertEquals("-", a)
+        assertEquals("-", a)
     }
 
     @Test
