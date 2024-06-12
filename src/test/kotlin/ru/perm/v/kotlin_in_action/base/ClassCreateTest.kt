@@ -1,4 +1,4 @@
-    package ru.perm.v.kotlin_in_action.base
+package ru.perm.v.kotlin_in_action.base
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -80,6 +80,7 @@ class ClassCreateTest {
         class Example {
             fun simpleMethod(): String { return "Class method" }
         }
+        // add method to class (extension class)
         fun Example.extensionMethod(): String { return "Extension function" }
 
         assertEquals("Class method", Example().simpleMethod())
