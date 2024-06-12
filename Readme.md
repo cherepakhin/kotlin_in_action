@@ -51,4 +51,4 @@ OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mo
 ### Примечания
 
 Делегаты в kotlin:
-[https://github.com/cherepakhin/kotlin_in_action/ru/perm/v/kotlin_in_action/base/DelegateCarTest](https://github.com/cherepakhin/kotlin_in_action/ru/perm/v/kotlin_in_action/base/DelegateCarTest.kt)
+[ru.perm.v.kotlin_in_action.base.DelegateCarTest](https://github.com/cherepakhin/kotlin_in_action/blob/master/src/test/kotlin/ru/perm/v/kotlin_in_action/base/DelegateCarTest.kt)
