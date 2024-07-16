@@ -20,7 +20,7 @@ class CoroutineSimpleTest {
 //        longRunningTask executing on...: Thread-3
 //        longRunningTask ends on thread ...: Thread-3
 
-// if wait for finished longRunningTask time sleep = 500, then:
+// if "wait for finished longRunningTask" time sleep = 500, then:
 //        My program runs...: Test worker
 //        My program run ends...: Test worker
 //        executing longRunningTask on...: Thread-3
