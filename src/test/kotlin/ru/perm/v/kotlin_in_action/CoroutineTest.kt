@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class CoroutineTest {
-    // Основной класс User(name: String, friends: List<Friend>, profile: Profile)
+    // Основной класс User(name: String, friends: List<Friend>, profile: Profile), см.ниже
     class Friend(name: String) {}
 
     class Profile(name: String) {}
@@ -46,6 +46,7 @@ class CoroutineTest {
             val name = async { repo.getName() }
             val friends = async { repo.getFriends() }
             val profile = async { repo.getProfile() }
+
             User(
                 name = name.await(),
                 friends = friends.await(),
@@ -58,10 +59,10 @@ class CoroutineTest {
     fun `should construct user`() = runBlocking {
         // given
         val repo = MyRepo()
-        val useCase = FetchUserUseCase(repo)
+        val fetchUserUseCase = FetchUserUseCase(repo)
 
         // when
-        val result = useCase.fetchUserData()
+        val result = fetchUserUseCase.fetchUserData()
 
         // then
         val friend = Friend("some-friend-id-1")
@@ -70,6 +71,7 @@ class CoroutineTest {
             friends = listOf(friend),
             profile = Profile("Example description")
         )
+
         assertEquals(expectedUser, result)
     }
 }
