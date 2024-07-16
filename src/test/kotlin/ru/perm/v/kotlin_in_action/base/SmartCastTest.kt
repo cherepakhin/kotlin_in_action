@@ -44,16 +44,19 @@ class SmartCastTest {
 
     @Test
     fun testKeywordISforObject() {
-        open class Person(name: String)
-        open class Employee(name: String, val company: String) : Person(name)
-
         val person = Person("Tom")
         assertTrue(person is Person) // key word IS
         assertFalse(person is Employee)
 
         val empl = Employee("Tom","Company")
-        assertTrue(empl is Employee)
+
+        assertTrue(empl is Employee && empl.company == "Company") // свойство company уже можно проверять, т.к. перед этим проверено, что empl это Employee
+        assertTrue(isEmployee(empl))
+        assertFalse(isEmployee(person))
         assertTrue(empl is Person) // Employee IS!!! Person. Test KEY WORD "IS"
     }
 
+    fun isEmployee(p:Person):Boolean {
+        return p is Employee // Test KEY WORD "IS"
+    }
 }
