@@ -3,6 +3,12 @@ package ru.perm.v.kotlin_in_action.base
 class O {
     private var prop: String = "";
 
+    constructor()
+    constructor(prop: String) {
+        this.prop = prop
+    }
+
+
     fun setProp(s: String): Unit {
         prop = s
     }
