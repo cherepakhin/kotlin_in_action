@@ -53,7 +53,7 @@ class SmartCastTest {
 
         val empl = Employee("Tom","Company")
         assertTrue(empl is Employee)
-        assertTrue(empl is Person) // Employee IS!!! Person
+        assertTrue(empl is Person) // Employee IS!!! Person. Test KEY WORD "IS"
     }
 
 }
