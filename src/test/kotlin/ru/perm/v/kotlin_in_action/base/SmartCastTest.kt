@@ -48,7 +48,7 @@ class SmartCastTest {
         assertTrue(person is Person) // key word IS
         assertFalse(person is Employee)
 
-        val empl = Employee("Tom","Company")
+        val empl = Employee("Tom", "Company")
 
         // свойство company можно проверять после &&, т.к. перед этим проверено, что empl это Employee
         assertTrue(empl is Employee && empl.company == "Company")
@@ -58,7 +58,59 @@ class SmartCastTest {
         assertTrue(empl is Person) // Employee is Person!!!
     }
 
-    fun isEmployee(p:Person):Boolean {
+    fun isEmployee(p: Person): Boolean {
         return p is Employee // Test KEY WORD "IS"
     }
+
+    @Test
+    fun whenTestForPerson() {
+        val person = Person("person")
+        var result = ""
+        when (person) {
+            is Person -> result = "is Person"
+            is Employee -> result = "is Employee"
+            is Manager -> result = "is Manager"
+        }
+
+        assertEquals("is Person", result)
+    }
+
+    @Test
+    fun whenTestForManagerIsPerson() {
+        val manager = Manager("manager")
+        var result = ""
+        when (manager) {
+            is Person -> result = "is Person"
+            is Manager -> result = "is Manager"
+        }
+
+        assertEquals("is Person", result) // Manager is Person
+    }
+
+    @Test
+    fun whenTestForManagerIsManager() {
+        val manager = Manager("manager")
+        var result = ""
+        when (manager) {
+            is Manager -> result = "is Manager"
+            is Person -> result = "is Person"
+        }
+
+        assertEquals("is Manager", result)
+    }
+
+    fun isManager(person: Person): Boolean {
+        return person is Manager
+    }
+
+    @Test
+    fun isManagerTest() {
+        assertTrue(isManager(Manager("manager")))
+    }
+
+    @Test
+    fun isManagerForPersonTest() {
+        assertFalse(isManager(Person("manager")))
+    }
+
 }
