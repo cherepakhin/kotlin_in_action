@@ -50,10 +50,12 @@ class SmartCastTest {
 
         val empl = Employee("Tom","Company")
 
-        assertTrue(empl is Employee && empl.company == "Company") // свойство company уже можно проверять, т.к. перед этим проверено, что empl это Employee
+        // свойство company можно проверять после &&, т.к. перед этим проверено, что empl это Employee
+        assertTrue(empl is Employee && empl.company == "Company")
+
         assertTrue(isEmployee(empl))
         assertFalse(isEmployee(person))
-        assertTrue(empl is Person) // Employee IS!!! Person. Test KEY WORD "IS"
+        assertTrue(empl is Person) // Employee is Person!!!
     }
 
     fun isEmployee(p:Person):Boolean {
