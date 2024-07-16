@@ -1,5 +1,6 @@
 package ru.perm.v.kotlin_in_action.base
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -86,4 +87,37 @@ class ClassCreateTest {
         assertEquals("Class method", Example().simpleMethod())
         assertEquals("Extension function", Example().extensionMethod())
     }
+
+    @Test
+    fun objectsWithEqualsAndHashCode() {
+        class O(val s: String) {
+            override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (other !is O) return false
+
+                if (s != other.s) return false
+
+                return true
+            }
+
+            override fun hashCode(): Int {
+                return s.hashCode()
+            }
+        }
+
+        val o1 =O("1")
+        val o2 =O("1")
+
+        assertEquals(o1, o2) // сравнивется по equals(), hashcode(). Без переопределения этих методов не равны (как и в Java)
+    }
+    @Test
+    fun simpleNotEqualsObjects() {
+        class O(val s: String)
+
+        val o1 =O("1")
+        val o2 =O("1")
+
+        Assertions.assertNotEquals(o1, o2) // NOT equals, AS in Java
+    }
+
 }
