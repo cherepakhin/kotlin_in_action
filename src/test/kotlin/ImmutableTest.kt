@@ -7,10 +7,11 @@ class ImmutableTest {
     @Test
     fun compareListStrings() {
         val immutableList = listOf("one", "two")
-        var s = immutableList[0] // строки копируются
+        var s = immutableList[0] // строки КОПИРУЮТСЯ! объекты НЕ КОПИРУЮТСЯ!
         s = "NEW_VAL"
         assertEquals(listOf("one", "two"), immutableList)
         // т.к. строки копируются, immutableList[0] остался прежним (не "NEW_VAL")
+        assertEquals("one", immutableList[0])
     }
 
     @Test
