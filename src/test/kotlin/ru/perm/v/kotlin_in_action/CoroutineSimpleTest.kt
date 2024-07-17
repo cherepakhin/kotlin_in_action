@@ -3,11 +3,14 @@ package ru.perm.v.kotlin_in_action
 import org.junit.jupiter.api.Test
 import kotlin.concurrent.thread
 
+/**
+ * https://bestcode.su/mobile/ponimanie-kotlin-coroutines/
+ */
 class CoroutineSimpleTest {
     @Test
     fun runTwoThread() {
         println("My program runs...: ${Thread.currentThread().name}")
-
+        // Запуск в отдельном потоке метода longRunningTask()
         thread { // key word "thread"!!!
             longRunningTask()
         }
@@ -20,7 +23,7 @@ class CoroutineSimpleTest {
 //        longRunningTask executing on...: Thread-3
 //        longRunningTask ends on thread ...: Thread-3
 
-// if "wait for finished longRunningTask" time sleep = 500, then:
+// Если паузу в основном потоке сделать 500мс, тогда программа завершается не дожидаясь окончания longRunningTask():
 //        My program runs...: Test worker
 //        My program run ends...: Test worker
 //        executing longRunningTask on...: Thread-3
@@ -32,4 +35,5 @@ class CoroutineSimpleTest {
         Thread.sleep(1000)
         println("longRunningTask ends on thread ...: ${Thread.currentThread().name}")
     }
+
 }
