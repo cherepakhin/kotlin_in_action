@@ -5,8 +5,18 @@ import org.junit.jupiter.api.Test
 
 class InheritClassTest {
     open class Base { // "open" НУЖЕН для наследования
-        open val name: String = "Base" // open НУЖЕН для переопределения (замена "private")
+        open var name: String = "Base" // open НУЖЕН для переопределения (замена "private")
         open var var1: String = "Var1Base" // для var тоже нужно указать open
+
+        constructor()
+
+        constructor(name:String) {
+            this.name = name
+        }
+
+        constructor(name:String, var1:String): this(name) { // call this(name)
+            this.var1 = var1
+        }
     }
 
     class InheritBase : Base() {
@@ -25,5 +35,19 @@ class InheritClassTest {
 
         assertEquals("Base", inheritBase.name)
         assertEquals("VarInheritBase", inheritBase.var1)
+    }
+
+    @Test
+    fun secondaryConstructorWithName() {
+        val base = Base("Base")
+        assertEquals("Base", base.name)
+        assertEquals("Var1Base", base.var1)
+    }
+    @Test
+    fun secondaryConstructorWithNameAndVar() {
+        val base = Base("Base", "Var1Base")
+
+        assertEquals("Base", base.name)
+        assertEquals("Var1Base", base.var1)
     }
 }
