@@ -20,21 +20,21 @@ class SealedTest {
     @Test
     fun tryInherit() {
         open class RegularClass {
-            var varLateInt: Int
+            var varInt: Int
             var varRegularClass = -1
 
             constructor() : super() {
-                this.varLateInt = 10
+                this.varInt = 10
             }
 
             constructor(varLateInt: Int) {
-                this.varLateInt = varLateInt
+                this.varInt = varLateInt
             }
 
         }
 
-        assertEquals(10, RegularClass().varLateInt)
-        assertEquals(100, RegularClass(100).varLateInt)
+        assertEquals(10, RegularClass().varInt)
+        assertEquals(100, RegularClass(100).varInt)
 
         class InheritFromRegularClass : RegularClass {
             var varFromInheritRegularClass: Int = 100
@@ -48,7 +48,7 @@ class SealedTest {
         }
 
         InheritFromRegularClass(300)
-        assertEquals(10,  InheritFromRegularClass().varLateInt)
+        assertEquals(10,  InheritFromRegularClass().varInt)
         assertEquals(-1,  InheritFromRegularClass().varRegularClass)
         assertEquals(100, InheritFromRegularClass().varFromInheritRegularClass)
         assertEquals(200, InheritFromRegularClass(200).varFromInheritRegularClass)
@@ -71,7 +71,7 @@ class SealedTest {
     // sealed class MyResult {...}
     // Здесь демо создания sealed class (запечатанного класса) с data class-ами (классов с данными) в нем
     sealed class MySealedClassResult {
-        // data class - Нередко мы создаём классы, единственным назначением которых является хранение данных.
+        // data class-ы - классы, единственным назначением которых является хранение данных.
         data class Success(val data: String) : MySealedClassResult()
         data class Error(val message: String) : MySealedClassResult()
         object Loading : MySealedClassResult()
