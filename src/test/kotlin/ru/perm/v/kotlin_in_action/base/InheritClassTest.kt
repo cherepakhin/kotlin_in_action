@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test
 
 class InheritClassTest {
     open class Base { // "open" НУЖЕН для наследования
-        open var name: String = "Base" // open НУЖЕН для переопределения (замена "private")
+        open lateinit var name: String // open НУЖЕН для переопределения (замена "private")
         open var var1: String = "Var1Base" // для var тоже нужно указать open
 
-        constructor()
+        constructor() {
+            name = "Base"
+        }
 
         constructor(name:String) {
             this.name = name
