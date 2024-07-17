@@ -12,11 +12,15 @@ class InheritClassTest {
             name = "Base"
         }
 
-        constructor(name:String) {
+        constructor(name:String): this() { // call constructor()
+// call as java constructor - ERROR!!!
+//            this(name, "Var1Base") ERROR!!!
+//            this(name) ERROR!!!
+
             this.name = name
         }
 
-        constructor(name:String, var1:String): this(name) { // call this(name)
+        constructor(name:String, var1:String): this(name) { // call constructor(name)
             this.var1 = var1
         }
     }
